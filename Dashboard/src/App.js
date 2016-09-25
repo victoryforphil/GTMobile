@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import firebase from 'firebase';
 import UserCheck from './Components/UserCheck';
+import SignIn from "./Components/SignIn.js";
 class App extends Component {
   state = {user: null}
   constructor(){
@@ -20,18 +21,32 @@ class App extends Component {
 
   }
 
-
+  signOut = () => {
+      firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+      }, function(error) {
+          // An error happened.
+      });
+  }
   render() {
     return (
       <div className="App">
 
         <nav className="navbar navbar-inverse">
           <a className="navbar-brand" href="#">GT Mobile</a>
+          <UserCheck
+            successful={<button type="button" className="btn btn-default navbar-btn" onClick={this.signOut}>Sign Out </button> }
+            failed=""
+          />
+
         </nav>
 
         <div className="container">
 
-          <UserCheck successful={<h1>Cool!</h1>}/>
+          <UserCheck
+            successful={<h1>Welcome</h1>}
+            failed={<SignIn/>}
+          />
         </div>
       </div>
     );
