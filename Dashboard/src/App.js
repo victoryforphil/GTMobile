@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import firebase from 'firebase';
-import SignIn from './Components/SignIn.js'
+import UserCheck from './Components/UserCheck';
 class App extends Component {
   state = {user: null}
-  componentDidMount(){
+  constructor(){
+    super();
     this.connectToFirebase();
   }
   connectToFirebase(){
@@ -17,33 +18,8 @@ class App extends Component {
     };
     this.fbApp = firebase.initializeApp(config);
 
-    firebase.auth().onAuthStateChanged(this.onSignInChange);
   }
-  onSignInChange = (user) =>{
-    if (user) {
 
-      this.setState({user: user})
-
-
-    } else {
-      this.setState({user: null})
-    }
-  }
-  signOut = () => {
-    firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}, function(error) {
-  // An error happened.
-});
-  }
-  checkSignin = () =>{
-
-    if(this.state.user){
-      return (<h1 onClick={this.signOut}>Welcome {this.state.user.email} (Click to Sign Out)</h1>)
-    }else{
-      return(<SignIn/>)
-    }
-  }
 
   render() {
     return (
@@ -54,7 +30,8 @@ class App extends Component {
         </nav>
 
         <div className="container">
-          {this.checkSignin()}
+
+          <UserCheck successful={<h1>Cool!</h1>}/>
         </div>
       </div>
     );
