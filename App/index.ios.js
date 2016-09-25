@@ -16,7 +16,7 @@ import {
   Alert
 } from 'react-native';
 
-import HelloComponent from './Components/DrawerContent.js';
+import DrawerContent from './Components/DrawerContent.js';
 import Drawer from 'react-native-drawer'
 
 class GTMobile extends Component {
