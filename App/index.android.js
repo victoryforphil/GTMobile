@@ -9,26 +9,44 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Alert
 } from 'react-native';
 
+import HelloComponent from './Components/HelloComponent.js';
+import Drawer from 'react-native-drawer'
+
 class GTMobile extends Component {
+
+  componentDidMount(){
+    var self = this;
+
+  }
+
+  closeControlPanel() {
+    this._drawer.close()
+  };
+  openControlPanel() {
+    this._drawer.open()
+  };
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Drawer
+        ref={(ref) => this._drawer = ref}
+        content={<HelloComponent/>}
+        openDrawerOffset={100}
+        styles={drawerStyles}
+        tweenHandler={Drawer.tweenPresets.parallax}>
+      <Text>GT Mobile</Text>
+
+    </Drawer>
     );
   }
+}
+const drawerStyles = {
+  drawer: { shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 3},
+  main: {paddingLeft: 3},
 }
 
 const styles = StyleSheet.create({

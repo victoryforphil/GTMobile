@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
-
+import Firebase from 'firebase';
+import SignIn from './Components/SignIn.js'
 class App extends Component {
+
+  connectToFirebase(){
+    var config = {
+        apiKey: "AIzaSyA1vGSYU6O0rB3QcMJyUk5vscR-fzCWBVc",
+        authDomain: "gtmobile-2758e.firebaseapp.com",
+        databaseURL: "https://gtmobile-2758e.firebaseio.com",
+        storageBucket: "gtmobile-2758e.appspot.com",
+        messagingSenderId: "697096842426"
+    };
+    this.fbApp = Firebase.initializeApp(config);
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>test</h2>
+
+        <nav className="navbar navbar-inverse">
+          <a className="navbar-brand" href="#">GT Mobile</a>
+        </nav>
+
+        <div className="container">
+          <SignIn/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
