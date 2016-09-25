@@ -1,35 +1,65 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  PropTypes,
+  ScrollView,
   StyleSheet,
   Text,
-  View
+  TouchableOpacity,
+  View,
+  Alert
 } from 'react-native';
 
+import HelloComponent from './Components/DrawerContent.js';
+import Drawer from 'react-native-drawer'
+
 class GTMobile extends Component {
+
+
+  closeDrawer = () => {
+    this._drawer.close()
+  };
+  openDrawer = () => {
+    this._drawer.open()
+  };
+
+  componentDidMount(){
+    this.closeDrawer();
+  }
+
+
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Drawer
+        ref={(ref) => this._drawer = ref}
+        content={<DrawerContent closeDrawer={this.closeDrawer}/>}
+        openDrawerOffset={200}
+        styles={drawerStyles}
+        >
+        <TouchableOpacity style={styles.button} onPress={this.openDrawer}>
+        <Text> Open Drawer </Text>
+        </TouchableOpacity>
+
+    </Drawer>
+
     );
   }
 }
+
+
+const drawerStyles = {
+  drawer: { shadowColor: '#4d5966',backgroundColor:'#282a2e', shadowOpacity: 15, shadowRadius: 35 ,},
+  main: {paddingLeft: 20, paddingTop: 50},
+}
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -38,16 +68,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+button: {
+  backgroundColor: 'transparent',
+
+},
 });
 
 AppRegistry.registerComponent('GTMobile', () => GTMobile);
