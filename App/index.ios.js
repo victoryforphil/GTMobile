@@ -13,65 +13,37 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Alert
+  Alert,
+  Navigator
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import DrawerContent from './Components/DrawerContent.js';
-import Drawer from 'react-native-drawer'
+
+import AppTemplate from "./Components/AppTemplate"
 
 class GTMobile extends Component {
 
-  state = {
-    drawerOpen: false
-  }
 
-  constructor(props){
-    super(props);
-  }
 
-  closeDrawer = () => {
-    this.setState({drawerOpen: false});
-  };
-  openDrawer = () => {
-    this.setState({drawerOpen: true});
-  };
-
-  toggle = () => {
-    this.setState({drawerOpen: !this.state.drawerOpen})
-  };
-
-  componentDidMount(){
-    this.closeDrawer();
+  renderScene(route, navigator) {
+     return (<AppTemplate route={route} navigator={navigator}/>)
   }
 
   render() {
     return (
-      <Drawer
-        ref={(ref) => this._drawer = ref}
-        open={this.state.drawerOpen}
-        type={"overlay"}
-        content={<DrawerContent closeDrawer={this.closeDrawer}/>}
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
-        acceptTap={true}
-        styles={drawerStyles}
+      <View style={{flex:1}}>
 
-        >
-
-        <Icon name="menu" size={30} style = {styles.button} onPress={this.toggle}>
-  </Icon>
-
-    </Drawer>
+        <Navigator
+        initialRoute={{name: 'Home'}}
+        renderScene={this.renderScene.bind(this)} />
+      </View>
 
     );
   }
 }
 
 
-const drawerStyles = {
-  drawer: { shadowColor: '#4d5966',backgroundColor:'#282a2e', shadowOpacity: 15, shadowRadius: 35 ,},
-  main: {paddingLeft: 20, paddingTop: 50},
-}
+
 
 
 
@@ -82,8 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-button: {
-  backgroundColor: 'transparent',
+menu: {
 
 },
 });
