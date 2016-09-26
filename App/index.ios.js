@@ -15,37 +15,51 @@ import {
   View,
   Alert
 } from 'react-native';
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import DrawerContent from './Components/DrawerContent.js';
 import Drawer from 'react-native-drawer'
 
 class GTMobile extends Component {
 
+  state = {
+    drawerOpen: false
+  }
+
+  constructor(props){
+    super(props);
+  }
 
   closeDrawer = () => {
-    this._drawer.close()
+    this.setState({drawerOpen: false});
   };
   openDrawer = () => {
-    this._drawer.open()
+    this.setState({drawerOpen: true});
+  };
+
+  toggle = () => {
+    this.setState({drawerOpen: !this.state.drawerOpen})
   };
 
   componentDidMount(){
     this.closeDrawer();
   }
 
-
-
   render() {
     return (
       <Drawer
         ref={(ref) => this._drawer = ref}
+        open={this.state.drawerOpen}
+        type={"overlay"}
         content={<DrawerContent closeDrawer={this.closeDrawer}/>}
-        openDrawerOffset={200}
+        openDrawerOffset={0.2}
+        panCloseMask={0.2}
+        acceptTap={true}
         styles={drawerStyles}
+
         >
-        <TouchableOpacity style={styles.button} onPress={this.openDrawer}>
-        <Text> Open Drawer </Text>
-        </TouchableOpacity>
+
+        <Icon name="menu" size={30} style = {styles.button} onPress={this.toggle}>
+  </Icon>
 
     </Drawer>
 
