@@ -35,7 +35,9 @@ class App extends Component {
         <nav className="navbar navbar-inverse">
           <a className="navbar-brand" href="#">GT Mobile</a>
           <UserCheck
-            successful={<button type="button" className="btn btn-default navbar-btn" onClick={this.signOut}>Sign Out </button> }
+            successful={
+              <button type="button" className="btn btn-default navbar-btn" onClick={this.signOut}>Sign Out </button>
+            }
             failed=""
           />
 
