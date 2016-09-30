@@ -26,7 +26,9 @@ class NavBar extends Component {
     if(this._nav){
       this._nav.push({
         name: route
-      })
+      });
+      this._drawer.close();
+      this.setState({currentPage: route})
     }
 
   }
@@ -40,6 +42,7 @@ class NavBar extends Component {
         content={<DrawerContent onSelect={this.onSelect.bind(this)}/>}
         openDrawerOffset={.4}
         panCloseMask={.2}
+        panOpenMask={.2}
         acceptTap={true}
         open={true}
         styles={drawerStyles}>

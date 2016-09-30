@@ -23,7 +23,7 @@ class DrawerContent extends Component {
       <TouchableOpacity style={styles.button} onPress={()=>{this.props.onSelect("Home")}}>
         <Text style={ styles.DrwrTex}><Icon name="home" size={30 } sytle={styles.icons}  />   Home</Text>
       </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this.props.onSelect("Classes")}>
+        <TouchableOpacity style={styles.button} onPress={()=>{this.props.onSelect("Classes")}}>
         <Text style={ styles.DrwrTex}><Icon name="school" size={30 } sytle={styles.icons}  />   Classes</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={this.props.closeDrawer}>
