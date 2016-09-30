@@ -10,9 +10,11 @@ import NavBar from "./NavBar"
 class AppTemplate extends Component {
     render() {
       return(
-        <div>
+        <div >
           <NavBar/>
+          <div className="container">
           {this.props.children}
+        </div>
         </div>
       )
     }
