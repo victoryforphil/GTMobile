@@ -40,10 +40,28 @@ class EventList extends Component{
 
   renderList(){
     return(
-      <ul>{this.state.events.map(val=>{
-          return (<li key={val.name}>{val.name}</li>)
-        })}
-      </ul>)
+      <table className="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Desc</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {this.state.events.map(val=>{
+            return (
+              <tr key={val.name}>
+                <td>{val.name}</td>
+                <td>{val.date}</td>
+                <td>{val.desc}</td>
+              </tr>)
+          })}
+        </tbody>
+          </table>
+        )
+
+
   }
 
   render(){
