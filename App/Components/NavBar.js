@@ -12,7 +12,11 @@ import Drawer from 'react-native-drawer'
 import DrawerContent from "./DrawerContent"
 import Classes from './Classes'
 import Home from './Home'
+import Athletics from './Athletics'
+import Events from './Events'
+import Settings from './Settings'
 class NavBar extends Component {
+
 
   closeDrawer = () => {
     this._drawer.close()
@@ -33,24 +37,33 @@ class NavBar extends Component {
 
   }
 
+
   render() {
     var self = this;
     return (
       <Drawer
         ref={(ref) => this._drawer = ref}
 
+
         content={<DrawerContent onSelect={this.onSelect.bind(this)}/>}
+
+
         openDrawerOffset={.4}
         panCloseMask={.2}
         panOpenMask={.2}
         acceptTap={true}
         open={true}
-        styles={drawerStyles}>
+        styles={drawerStyles}      >
+
         <Navigator
+
           initialRoute={{name: 'Classes'}}
           ref={(ref) =>this._nav = ref}
           renderScene={this.renderScene} >
         </Navigator>
+
+
+
 
         </Drawer>
 
@@ -71,6 +84,19 @@ class NavBar extends Component {
 
     <Classes navigator={navigator}/>
  )
+
+ case "Athletics":
+ return (
+ <Athletics navigator={navigator}/>
+)
+case "Events":
+return (
+<Events navigator={navigator}/>
+)
+case "Settings":
+return (
+<Settings navigator={navigator}/>
+)
     }
   }
 

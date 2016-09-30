@@ -19,7 +19,7 @@ import Classes from './Components/Classes'
 class GTMobile extends Component {
 
 
-  
+
 
   render() {
     return (
@@ -30,7 +30,6 @@ class GTMobile extends Component {
     );
   }
 }
-
 
 
 
