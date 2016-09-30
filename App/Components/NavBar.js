@@ -13,29 +13,41 @@ import DrawerContent from "./DrawerContent"
 import Classes from './Classes'
 import Home from './Home'
 class NavBar extends Component {
-  onSelect (route){
-    this.refs.navigator.push({
-      name: route
-    });
-    this.closeDrawer();
+
+  closeDrawer = () => {
+    this._drawer.close()
   }
+
+  openDrawer = () => {
+    this._drawer.open()
+  }
+
+  onSelect (route) {
+    if(this._nav){
+      this._nav.push({
+        name: route
+      })
+    }
+
+  }
+
   render() {
+    var self = this;
     return (
       <Drawer
         ref={(ref) => this._drawer = ref}
 
-        content={<DrawerContent onSelect={this.onSelect}/>}
+        content={<DrawerContent onSelect={this.onSelect.bind(this)}/>}
         openDrawerOffset={.4}
         panCloseMask={.2}
         acceptTap={true}
         open={true}
         styles={drawerStyles}>
         <Navigator
-                    initialRoute={{name: 'Classes'}}
-                    ref="navigator"
-                    renderScene={this.renderScene} >
-
-              </Navigator>
+          initialRoute={{name: 'Classes'}}
+          ref={(ref) =>this._nav = ref}
+          renderScene={this.renderScene} >
+        </Navigator>
 
         </Drawer>
 
@@ -61,14 +73,7 @@ class NavBar extends Component {
 
       componentDidMount(){
       }
-      closeDrawer = () => {
 
-        this._drawer.close()
-
-      };
-      openDrawer = () => {
-        this._drawer.open()
-      };
 
 
 

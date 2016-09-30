@@ -20,7 +20,7 @@ class DrawerContent extends Component {
   render() {
     return(
       <ScrollView >
-      <TouchableOpacity style={styles.button} onPress={this.props.onSelect("Home")}>
+      <TouchableOpacity style={styles.button} onPress={()=>{this.props.onSelect("Home")}}>
         <Text style={ styles.DrwrTex}><Icon name="home" size={30 } sytle={styles.icons}  />   Home</Text>
       </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={this.props.onSelect("Classes")}>
