@@ -4,45 +4,73 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert
+  Alert,
+  Navigator
 } from 'react-native';
 
 import Drawer from 'react-native-drawer'
 import DrawerContent from "./DrawerContent"
+import Classes from './Classes'
+import Home from './Home'
 class NavBar extends Component {
 
-    componentDidMount(){
-
-    }
-    closeDrawer = () => {
-      this._drawer.close()
-
-    };
-    openDrawer = () => {
-      this._drawer.open()
-    };
   render() {
     return (
       <Drawer
         ref={(ref) => this._drawer = ref}
-        type={"overlay"}
+
         content={<DrawerContent closeDrawer={this.closeDrawer} navigator={this.props.navigator}/>}
-        openDrawerOffset={0.3}
+        openDrawerOffset={.4}
         panCloseMask={.2}
         acceptTap={true}
         open={true}
-        styles={drawerStyles}
-        >
-          {this.props.pageToDisplay}
+        styles={drawerStyles}      >
+        <Navigator
+                    initialRoute={{name: 'Classes'}}
+                    ref="appNavigtor"
+                    renderScene={this.renderScene} >
+
+              </Navigator>
 
         </Drawer>
 
     );
   }
+  renderScene(route, navigator) {
+    var globalNavigatorProps = { navigator }
+
+    switch(route.name){
+      case "Home":
+
+      return (
+        <Home navigator={navigator}/>
+
+  )
+  case "Classes":
+  return(
+
+    <Classes navigator={navigator}/>
+ )
+    }
+  }
+
+      componentDidMount(){
+      }
+      closeDrawer = () => {
+
+        this._drawer.close()
+
+      };
+      openDrawer = () => {
+        this._drawer.open()
+      };
+
+
+
 }
 
 const drawerStyles = {
   drawer: { shadowColor: '#4d5966',backgroundColor:'#282a2e', shadowOpacity: 15, shadowRadius: 35 ,},
-  main: {paddingLeft: 20, paddingTop: 50},
+  main: {paddingLeft: 0, paddingTop: 0},
 }
 export default NavBar;

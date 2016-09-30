@@ -1,36 +1,48 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
+import NavBar from './NavBar'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class Classes extends Component {
+  changeScreen = () => {
+this.props.navigator.push({
+name: "Home"
+})
+  }
+  seeya = () => {
+this.props.navigator.pop({
+name: "Home"
+})
+  }
+
   render() {
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+         Classes screen
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <TouchableOpacity style={styles.button} onPress={this.changeScreen}>
+          <Text style={ styles.DrwrTex}><Icon name="skip-next" size={30 } sytle={styles.icons}  />   Next</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={this.seeya}>
+          <Text style={ styles.DrwrTex}><Icon name="skip-previous" size={30 } sytle={styles.icons}  />   Back</Text>
+        </TouchableOpacity>
+
+
       </View>
+
+
+
     );
   }
 }
-export default Classes;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -42,6 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+
   },
   instructions: {
     textAlign: 'center',
@@ -49,3 +62,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+export default Classes;

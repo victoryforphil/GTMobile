@@ -8,25 +8,29 @@ import {
   TouchableOpacity,
   View,
   Alert,
+  Navigator
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import NavBar from './NavBar'
+
+
 class DrawerContent extends Component {
 
-navigate(routeName) {
-  this.props.navigator.push({
-    name: routeName
-  })
+  changeScreen = () => {
+this.props.navigator.push({
+name: "Home"
+})
 }
 
 
   render() {
     return(
       <ScrollView >
-      <TouchableOpacity style={styles.button} onPress={this.navigate.bind(this, 'Home')}>
+      <TouchableOpacity style={styles.button} onPress={this.props.changeScreen}>
         <Text style={ styles.DrwrTex}><Icon name="home" size={30 } sytle={styles.icons}  />   Home</Text>
       </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this.props.closeDrawer}>
+        <TouchableOpacity style={styles.button} onPress={(this.props.closeDrawer)}>
         <Text style={ styles.DrwrTex}><Icon name="school" size={30 } sytle={styles.icons}  />   Classes</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={this.props.closeDrawer}>

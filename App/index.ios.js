@@ -1,9 +1,3 @@
-/**
-* Sample React Native App
-* https://github.com/facebook/react-native
-* @flow
-*/
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -18,25 +12,20 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import DrawerContent from './Components/DrawerContent.js';
-
-import AppTemplate from "./Components/AppTemplate"
+import NavBar from './Components/NavBar'
+import Home from './Components/Home'
+import Classes from './Components/Classes'
 
 class GTMobile extends Component {
 
 
-
-  renderScene(route, navigator) {
-     return (<AppTemplate route={route} navigator={navigator}/>)
-  }
+  
 
   render() {
     return (
-      <View style={{flex:1}}>
+  <NavBar />
 
-        <Navigator
-        initialRoute={{name: 'Home'}}
-        renderScene={this.renderScene.bind(this)} />
-      </View>
+
 
     );
   }
