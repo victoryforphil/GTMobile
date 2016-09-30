@@ -17,20 +17,13 @@ import NavBar from './NavBar'
 
 class DrawerContent extends Component {
 
-  changeScreen = () => {
-this.props.navigator.push({
-name: "Home"
-})
-}
-
-
   render() {
     return(
       <ScrollView >
-      <TouchableOpacity style={styles.button} onPress={this.props.changeScreen}>
+      <TouchableOpacity style={styles.button} onPress={this.props.onSelect("Home")}>
         <Text style={ styles.DrwrTex}><Icon name="home" size={30 } sytle={styles.icons}  />   Home</Text>
       </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={(this.props.closeDrawer)}>
+        <TouchableOpacity style={styles.button} onPress={this.props.onSelect("Classes")}>
         <Text style={ styles.DrwrTex}><Icon name="school" size={30 } sytle={styles.icons}  />   Classes</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={this.props.closeDrawer}>
