@@ -52,12 +52,12 @@ class NavBar extends Component {
         panCloseMask={.2}
         panOpenMask={.2}
         acceptTap={true}
-        open={true}
+        open={false}
         styles={drawerStyles}      >
 
         <Navigator
 
-          initialRoute={{name: 'Classes'}}
+          initialRoute={{name: 'Home'}}
           ref={(ref) =>this._nav = ref}
           renderScene={this.renderScene} >
         </Navigator>
