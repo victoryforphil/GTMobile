@@ -46,10 +46,15 @@ name: "Classes"
         <TouchableOpacity style={styles.button} onPress={()=>{this.props.onSelect("Athletics")}}>
           <Text style={ styles.DrwrTex}><Icon name="directions-run" sytle={styles.icons} size={30 }  />   Athletics</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=>{this.props.onSelect("BellSchedule")}}>
+          <Text style={ styles.DrwrTex}><Icon name="alarm" size={30 } sytle={styles.icons}  />   Bell schedule</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=>{this.props.onSelect("Voting")}}>
+          <Text style={ styles.DrwrTex}><Icon name="favorite" size={30 } sytle={styles.icons}  />   Voting</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={()=>{this.props.onSelect("Settings")}}>
           <Text style={ styles.DrwrTex}><Icon name="settings" size={30 } sytle={styles.icons}  />   Settings</Text>
         </TouchableOpacity>
-
       </ScrollView>
     );
   }
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
     button: {
     borderWidth: .5,
     borderColor: 'black',
-    padding: 30,
+    padding: 25,
     flexDirection: 'row'
 
   },

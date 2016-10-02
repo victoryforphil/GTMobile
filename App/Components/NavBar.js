@@ -15,6 +15,9 @@ import Home from './Home'
 import Athletics from './Athletics'
 import Events from './Events'
 import Settings from './Settings'
+import BellSchedule from './BellSchedule'
+import Voting from './Voting'
+
 class NavBar extends Component {
 
 
@@ -34,6 +37,10 @@ class NavBar extends Component {
       this._drawer.close();
       this.setState({currentPage: route})
     }
+
+  }
+
+  diffrentNavigator =() => {
 
   }
 
@@ -96,6 +103,14 @@ return (
 case "Settings":
 return (
 <Settings navigator={navigator}/>
+)
+case "BellSchedule":
+return (
+<BellSchedule navigator={navigator}/>
+)
+case "Voting":
+return (
+<Voting navigator={navigator}/>
 )
     }
   }

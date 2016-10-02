@@ -7,10 +7,11 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import HomeFeed from './HomeFeed'
 class Home extends Component {
 
   changeScreen = () => {
@@ -27,12 +28,19 @@ name: "Classes"
   render() {
 
     return (
-      <View style={styles.container}>
-      <Image
-        style={styles.homeImage}
-        source={require('./GTHS.jpg')} />
-    
-      </View>
+
+  <ScrollView>
+  <View style={styles.container}>
+
+        <Image
+          style={styles.homeImage}
+          source={require('./GTHS.jpg')} />
+
+<HomeFeed />
+
+    </View>
+
+</ScrollView>
     );
   }
 
@@ -50,7 +58,7 @@ const styles = StyleSheet.create({
   homeImage: {
     marginTop:0,
     width:380,
-    height: 190
+    height: 230
   },
   welcome: {
     backgroundColor:'#F5FCFF',

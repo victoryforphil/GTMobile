@@ -15,6 +15,7 @@ import DrawerContent from './Components/DrawerContent.js';
 import NavBar from './Components/NavBar'
 import Home from './Components/Home'
 import Classes from './Components/Classes'
+import BellSchedule from './Components/BellSchedule'
 
 class GTMobile extends Component {
 
