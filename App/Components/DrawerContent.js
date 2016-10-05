@@ -34,13 +34,39 @@ class DrawerContent extends Component {
           {
             name: "Athletics",
             icon: "directions-run",
-            route: "home",
-
-            children: [{
-                name: "AthleticsChild",
+            children: [
+              {
+                name: "BasketBall",
                 icon: "directions-run",
-                route: "BasketBall",
-            }]
+                children:[
+                  {
+                    name: "JV",
+                    icon: "directions-run",
+                    children:[
+                      {
+                        name: "Events",
+                        icon: "directions-run",
+                        route: "Events",
+                        dataPath:"BasketBall/JV/Events"
+                      }
+                    ]
+                  },
+                  {
+                    name: "Varsity",
+                    icon: "directions-run",
+                    children:[
+                      {
+                        name: "Events",
+                        icon: "directions-run",
+                        route: "Events",
+                        dataPath:"BasketBall/Varsity/Events"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+
           }
       ]
 
@@ -63,7 +89,9 @@ class DrawerContent extends Component {
           this.updateList(newList);
         }
         console.log(selected);
-        this.props.onSelect(selected.route, selected.dataPath);
+        if(selected.route){
+          this.props.onSelect(selected.route, selected.dataPath);
+        }
     }
     handleBack(){
       var newList = this.state.listMap;
