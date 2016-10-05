@@ -5,7 +5,7 @@ import UserCheck from './Components/UserCheck';
 import SignIn from "./Components/SignIn.js";
 import { Router, Route, Link, browserHistory } from 'react-router'
 
-
+import * as firebase from 'firebase';
 
 import AppTemplate from "./Components/AppTemplate"
 import SchoolEvents from "./Components/Pages/SchoolEvents"
@@ -14,10 +14,7 @@ import SchoolEvent from "./Components/Pages/SchoolEvent"
 
 class App extends Component {
   state = {user: null}
-  constructor(){
-    super();
 
-  }
 
 
   render() {

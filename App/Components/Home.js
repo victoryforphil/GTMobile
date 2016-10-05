@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HomeFeed from './HomeFeed'
+import Events from './Events'
 class Home extends Component {
 
   changeScreen = () => {
@@ -28,19 +29,20 @@ name: "Classes"
   render() {
 
     return (
-
-  <ScrollView>
   <View style={styles.container}>
+  <ScrollView>
+
 
         <Image
           style={styles.homeImage}
           source={require('./GTHS.jpg')} />
 
-<HomeFeed />
+        <Events/>
 
-    </View>
+
 
 </ScrollView>
+    </View>
     );
   }
 
@@ -49,19 +51,16 @@ name: "Classes"
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#23272A',
   },
 
   homeImage: {
     marginTop:0,
     width:380,
     height: 230
-  },
-  welcome: {
-    backgroundColor:'#F5FCFF',
   }
 });
 export default Home;

@@ -115,7 +115,7 @@ class NavBar extends Component {
         panCloseMask={.2}
         panOpenMask={.2}
         acceptTap={true}
-        open={true}
+
         styles={drawerStyles}      >
 
         <Navigator
