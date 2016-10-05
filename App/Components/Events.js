@@ -6,7 +6,9 @@ import {
   View,
   TouchableOpacity,
   ListView,
-  Dimensions
+  Dimensions,
+  ScrollView,
+  Image
 } from 'react-native';
 import * as firebase from 'firebase';
 
@@ -40,54 +42,72 @@ class Events extends Component {
     return(
       <View style={styles.listItem}>
         <Text style={styles.title}>{rowData.name}</Text>
-        <Text style={styles.desc}>{rowData.desc}</Text>
         <Text style={styles.date}>{rowData.date}</Text>
+        <Text style={styles.desc}>{rowData.desc}</Text>
+
       </View>
     )
   }
 
   render() {
     return (
-      <View>
+      <ScrollView>
+      <View style={styles.view}>
+      <Image
+        style={styles.EventImage}
+        source={require('./GTHS.jpg')} />
           <ListView
             style={styles.list}
             dataSource={this.state.dataSource}
             renderRow={(rowData) => this.renderItem(rowData)}
           />
       </View>
+      </ScrollView>
     );
   }
 }
 const styles = StyleSheet.create({
     view: {
       flex: 1,
-
+      backgroundColor: '#23272A'
     },
 
     listItem: {
         flex: 1,
         flexDirection: 'column',
-        padding: 10,
+        padding: 15,
         margin: 10,
         backgroundColor: '#2C2F33',
-        marginBottom: 10,
+        marginBottom: -10,
         borderWidth: 1,
-        borderColor: '#23272A'
+        borderColor: '#23272A',
+        marginTop: 10,
     },
     title: {
-        fontSize: 30,
+        fontSize: 20,
         flex: 1,
-        color: 'white'
+        color: 'white',
+        marginBottom: 50,
     },
     desc: {
-        fontSize: 20,
+        fontSize: 15,
         color: 'grey',
+        marginLeft: 90,
         flex: 1,
+        marginTop: -20,
+        marginBottom: 20,
     },
     date: {
-        fontSize: 20,
-        color: 'blue',
+        fontSize: 15,
+        color: '#00CED1',
+        marginTop: -50,
         flex: 1,
+    },
+    EventImage: {
+      marginTop:0,
+      width:380,
+      height: 230
     }
+
 });
 export default Events;
