@@ -19,20 +19,30 @@ class DrawerContent extends Component {
 
     constructor(props) {
         super(props);
-        var initList = [{
+        var initList = [
+          {
             name: "Home",
             icon: "home",
             route: "Home"
-        }, {
+          },
+          {
+            name: "Events",
+            icon: "home",
+            route: "Events",
+            dataPath: "Events"
+          },
+          {
             name: "Athletics",
             icon: "directions-run",
             route: "home",
+
             children: [{
                 name: "AthleticsChild",
                 icon: "directions-run",
-                route: "AthleticsChild",
+                route: "BasketBall",
             }]
-        }]
+          }
+      ]
 
         var listGroup = {groups: [{routes: initList}]}
         this.state = {
@@ -53,7 +63,7 @@ class DrawerContent extends Component {
           this.updateList(newList);
         }
         console.log(selected);
-        this.props.onSelect(selected.route);
+        this.props.onSelect(selected.route, selected.dataPath);
     }
     handleBack(){
       var newList = this.state.listMap;

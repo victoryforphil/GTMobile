@@ -14,8 +14,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const winWidth = Dimensions.get('window').width
 class Events extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: this.ds.cloneWithRows([]),
@@ -23,7 +23,7 @@ class Events extends Component {
   }
   componentDidMount(){
     var self = this;
-    const db = firebase.database().ref("Events");
+    const db = firebase.database().ref(this.props.dataPath);
 
     db.on('value', snap => {
       var tempList =[];

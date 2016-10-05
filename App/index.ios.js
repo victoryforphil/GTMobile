@@ -19,7 +19,18 @@ import BellSchedule from './Components/BellSchedule'
 
 class GTMobile extends Component {
 
+  constructor(){
+    super();
+    const config = {
 
+      apiKey: "AIzaSyA1vGSYU6O0rB3QcMJyUk5vscR-fzCWBVc",
+      authDomain: "gtmobile-2758e.firebaseapp.com",
+      databaseURL: "https://gtmobile-2758e.firebaseio.com",
+      storageBucket: "gtmobile-2758e.appspot.com",
+      messagingSenderId: "697096842426"
+    };
+    firebase.initializeApp(config);
+  }
 
 
   render() {
