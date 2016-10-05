@@ -16,7 +16,7 @@ import NavBar from './Components/NavBar'
 import Home from './Components/Home'
 import Classes from './Components/Classes'
 import BellSchedule from './Components/BellSchedule'
-
+import * as firebase from 'firebase';
 class GTMobile extends Component {
 
   constructor(){
