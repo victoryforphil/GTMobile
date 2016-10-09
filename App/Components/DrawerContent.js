@@ -29,7 +29,7 @@ class DrawerContent extends Component {
             name: "Events",
             icon: "home",
             route: "Events",
-            dataPath: "Events"
+            group: ""
           },
           {
             name: "Athletics",
@@ -47,7 +47,7 @@ class DrawerContent extends Component {
                         name: "Events",
                         icon: "directions-run",
                         route: "Events",
-                        dataPath:"BasketBall/JV/Events"
+                        group:"BasketBall/JV/Events"
                       }
                     ]
                   },
@@ -59,7 +59,7 @@ class DrawerContent extends Component {
                         name: "Events",
                         icon: "directions-run",
                         route: "Events",
-                        dataPath:"BasketBall/Varsity/Events"
+                        group:"BasketBall/Varsity/Events"
                       }
                     ]
                   }
@@ -90,7 +90,7 @@ class DrawerContent extends Component {
         }
         console.log(selected);
         if(selected.route){
-          this.props.onSelect(selected.route, selected.dataPath);
+          this.props.onSelect(selected.route, selected.group);
         }
     }
     handleBack(){
@@ -120,7 +120,7 @@ class DrawerContent extends Component {
       if(this.state.canBack){
         return(
           <TouchableOpacity style={styles.button} onPress={()=>{self.handleBack()}}>
-            <Text style={styles.DrwrTex}><Icon name="home" size={30 } sytle={styles.icons} />Back</Text>
+            <Text style={styles.DrwrTex}><Icon name="arrow-back" size={30 } sytle={styles.icons} />Back</Text>
           </TouchableOpacity>
         )
       }

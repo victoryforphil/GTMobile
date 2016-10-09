@@ -2,7 +2,7 @@
 import { Router, Route, Link, browserHistory } from 'react-router'
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-
+import SchoolEventsListItem from "./SchoolEventsListItem"
 class SchoolEvents extends Component{
   render(){
     return(
@@ -50,18 +50,11 @@ class EventList extends Component{
         </thead>
         <tbody>
         {this.state.events.map(val=>{
-            return (
-              <tr key={val.name}>
-                <td>{val.name}</td>
-                <td>{val.date}</td>
-                <td>{val.desc}</td>
-              </tr>)
+            return (<SchoolEventsListItem event={val}/>)
           })}
         </tbody>
-          </table>
-        )
-
-
+      </table>
+    )
   }
 
   render(){
@@ -80,12 +73,14 @@ class NewEvent extends Component{
     this.state ={
       name: "",
       desc: "",
+      group: "",
       date: "12/31/16"
     }
   }
   createEvent = () =>{
     var id = "event-"+ randomInt(0,99999999);
     var obj = this.state;
+    obj.id = id;
     firebase.database().ref('Events/'+id).set(obj);
   }
 
@@ -95,6 +90,10 @@ class NewEvent extends Component{
 
   handleDescChange = (event) => {
     this.setState({desc: event.target.value});
+  }
+
+  handleGroupChange = (event) => {
+    this.setState({group: event.target.value});
   }
 
   handleDateChange = (event) => {
@@ -133,6 +132,19 @@ class NewEvent extends Component{
                     className="form-control"
                     id="eventName"
                     placeholder="Example Desc" />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="eventGroup">
+                    Event Group
+                  </label>
+                  <input
+                    type="text"
+                    value={this.state.group}
+                    onChange={this.handleGroupChange}
+                    className="form-control"
+                    id="eventGroup"
+                    placeholder="Sports/BasketBall/JV" />
                 </div>
 
                 <div className="form-group">

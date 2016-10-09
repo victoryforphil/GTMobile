@@ -25,13 +25,19 @@ class Events extends Component {
   }
   componentDidMount(){
     var self = this;
-    const db = firebase.database().ref(this.props.dataPath);
+    const db = firebase.database().ref("Events/");
 
     db.on('value', snap => {
       var tempList =[];
 
       snap.forEach(data => {
-        tempList.push(data.val())
+        if(this.props.group){
+          if(data.val().group == this.props.group){
+            tempList.push(data.val())
+          }
+        }else{
+          tempList.push(data.val())
+        }
       })
 
       this.setState({dataSource: self.ds.cloneWithRows(tempList)});
