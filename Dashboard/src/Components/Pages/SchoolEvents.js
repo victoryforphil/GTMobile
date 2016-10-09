@@ -102,75 +102,86 @@ class NewEvent extends Component{
 
 
   render(){
+    const inputForm = (  <form>
+          <div className="form-group">
+            <label htmlFor="eventName">
+              Event Name
+            </label>
+            <input
+              type="text"
+              value={this.state.name}
+              onChange={this.handleNameChange}
+              className="form-control"
+              id="eventName"
+              placeholder="Name" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="eventName">
+              Event Desc
+            </label>
+            <input
+              type="text"
+              value={this.state.desc}
+              onChange={this.handleDescChange}
+              className="form-control"
+              id="eventName"
+              placeholder="Example Desc" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="eventGroup">
+              Event Group
+            </label>
+            <input
+              type="text"
+              value={this.state.group}
+              onChange={this.handleGroupChange}
+              className="form-control"
+              id="eventGroup"
+              placeholder="Sports/BasketBall/JV" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="eventName">
+              Event Date
+            </label>
+            <input
+              type="text"
+              value={this.state.date}
+              onChange={this.handleDateChange}
+              className="form-control"
+              id="eventDate"
+              placeholder="12/31/16" />
+          </div>
+        </form>)
+
     return(
-      <div className="SignIn row">
-        <div className="panel panel-default col-23">
-          <div className="panel-heading">New Event</div>
-          <div className="panel-body">
-            <form>
-                <div className="form-group">
-                  <label htmlFor="eventName">
-                    Event Name
-                  </label>
-                  <input
-                    type="text"
-                    value={this.state.name}
-                    onChange={this.handleNameChange}
-                    className="form-control"
-                    id="eventName"
-                    placeholder="Name" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="eventName">
-                    Event Desc
-                  </label>
-                  <input
-                    type="text"
-                    value={this.state.desc}
-                    onChange={this.handleDescChange}
-                    className="form-control"
-                    id="eventName"
-                    placeholder="Example Desc" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="eventGroup">
-                    Event Group
-                  </label>
-                  <input
-                    type="text"
-                    value={this.state.group}
-                    onChange={this.handleGroupChange}
-                    className="form-control"
-                    id="eventGroup"
-                    placeholder="Sports/BasketBall/JV" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="eventName">
-                    Event Date
-                  </label>
-                  <input
-                    type="text"
-                    value={this.state.date}
-                    onChange={this.handleDateChange}
-                    className="form-control"
-                    id="eventDate"
-                    placeholder="12/31/16" />
-                </div>
-
-
-                <button type="button" className="btn btn-default" onClick={this.createEvent}>Create Event</button>
-              </form>
-
+      <div classname="SignIn row">
+        <div className="col s12 m6">
+          <div className="card blue darken-2">
+            <div className="card-content white-text">
+              <span className="card-title">
+                New Event
+              </span>
+              <p>
+                {inputForm}
+              </p>
+            </div>
+            <div className="card-action">
+              <a href="#" onClick={this.createEvent}>
+                Create Event
+              </a>
+            </div>
           </div>
         </div>
-
       </div>
+
     )
   }
 }
+
+
 
 function randomInt (low, high) {
     return Math.floor(Math.random() * (high - low) + low);

@@ -9,9 +9,27 @@ import React, {Component} from 'react';
 class NavBar extends Component {
   render() {
     return (
-      <nav className = "navbar navbar-inverse" >
-        <a className = "navbar-brand" href = "#" > GT Mobile </a>
-      </nav>)
+      <nav>
+        <div className="nav-wrapper blue">
+          <a href="#" className="brand-logo">
+            GT Mobile
+          </a>
+          <ul
+            id="nav-mobile"
+            className="right hide-on-med-and-down">
+            <li>
+              <Link to={`/events`}>Events</Link>
+            </li>
+            <li>
+              <a href="badges.html">Components</a>
+            </li>
+            <li>
+              <a href="collapsible.html">JavaScript</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    )
     }
 }
 export default NavBar;
