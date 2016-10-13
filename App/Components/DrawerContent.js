@@ -126,9 +126,9 @@ class DrawerContent extends Component {
       }
     }
     if(this.state.currentList){
-      var sideBarItems = this.state.currentList.map(function(item) {
+      var sideBarItems = this.state.currentList.map(function(item,i) {
         return (
-          <TouchableOpacity style={styles.button} onPress={()=>{self.handlePress(item)}}>
+          <TouchableOpacity key={i} style={styles.button} onPress={()=>{self.handlePress(item)}}>
             <Text style={styles.DrwrTex}><Icon name={item.icon} size={30 } sytle={styles.icons} />{item.name}</Text>
           </TouchableOpacity>
         );
@@ -143,33 +143,33 @@ class DrawerContent extends Component {
 }
 const styles = StyleSheet.create({
     button: {
-    borderWidth: .5,
-    borderColor: 'black',
-    padding: 25,
-    flexDirection: 'row'
+        borderWidth: .5,
+        borderColor: 'black',
+        padding: 25,
+        flexDirection: 'row'
 
-  },
-  backbutton: {
-  borderWidth: .5,
-  borderColor: 'black',
-  padding: 15,
-  flexDirection: 'row'
+    },
+    backbutton: {
+        borderWidth: .5,
+        borderColor: 'black',
+        padding: 15,
+        flexDirection: 'row'
 
-},
-newbutton: {
-borderWidth: .5,
-borderColor: 'black',
-padding: 25,
-flexDirection: 'row'
+    },
+    newbutton: {
+        borderWidth: .5,
+        borderColor: 'black',
+        padding: 25,
+        flexDirection: 'row'
 
-},
-  icons: {
-    color: '#00CED1',
-    padding: 30,
-marginTop: 15
-  },
-  DrwrTex: {
-    color: '#00CED1'
-  }
+    },
+    icons: {
+        color: '#00CED1',
+        padding: 30,
+        marginTop: 15
+    },
+    DrwrTex: {
+        color: '#00CED1'
+    }
 })
 export default DrawerContent
