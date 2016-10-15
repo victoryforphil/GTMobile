@@ -26,8 +26,12 @@ class DrawerContent extends Component {
             route: "Home"
           },
           {
+            name: "Classes",
+            icon: "school"
+          },
+          {
             name: "Events",
-            icon: "home",
+            icon: "event",
             route: "Events",
             group: ""
           },
@@ -36,37 +40,583 @@ class DrawerContent extends Component {
             icon: "directions-run",
             children: [
               {
-                name: "BasketBall",
-                icon: "directions-run",
-                children:[
+                name: "Baseball",
+                icon: "home",
+                children: [
                   {
-                    name: "JV",
-                    icon: "directions-run",
-                    children:[
+                    name: "Varsity",
+                    children: [
                       {
-                        name: "Events",
-                        icon: "directions-run",
-                        route: "Events",
-                        group:"BasketBall/JV/Events"
+                        name: "Roster"
+                      },
+                      {
+                        name: "Schedule"
+                      },
+                      {
+                        name: "Scores"
                       }
                     ]
                   },
+                  {
+                    name: "JV",
+                    children: [
+                      {
+                        name: "Roster"
+                      },
+                      {
+                        name: "Schedule"
+                      },
+                      {
+                        name: "Scores"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                name: "BasketBall",
+                icon: "directions-run",
+                children:[
+                    {
+                      name: "Boys",
+                      children: [
+                        {
+                          name: "Varsity",
+                          icon: "directions-run",
+                          children:[
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                          ]
+                        },
+                    {
+                      name: "JV",
+                      icon: "directions-run",
+                      children:[
+                        {
+                          name: "Roster",
+                          icon: "directions-run",
+                        },
+                        {
+                          name: "Schedule"
+                        },
+                        {
+                          name: "Scores"
+                        }
+                      ]
+                          },
+                          {
+                            name: "Freshmen",
+                            children:[
+                              {
+                                name: "Roster",
+                                icon: "directions-run",
+                              },
+                              {
+                                name: "Schedule"
+                              },
+                              {
+                                name: "Scores"
+                              }
+                            ]
+                          }
+                      ]
+                    },
+                    {
+                      name: "Girls",
+                      children: [
+                        {
+                          name: "Varsity",
+                          icon: "directions-run",
+                          children:[
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                          ]
+                        },
+                    {
+                      name: "JV",
+                      icon: "directions-run",
+                      children:[
+                        {
+                          name: "Roster",
+                          icon: "directions-run",
+                        },
+                        {
+                          name: "Schedule"
+                        },
+                        {
+                          name: "Scores"
+                        }
+                      ]
+                          },
+                          {
+                            name: "Freshmen",
+                            children:[
+                              {
+                                name: "Roster",
+                                icon: "directions-run",
+                              },
+                              {
+                                name: "Schedule"
+                              },
+                              {
+                                name: "Scores"
+                              }
+                            ]
+                          }
+                      ]
+                    }
+
+                  ]
+             },
+                      {
+                        name: "Football",
+                        icon: "home",
+                        children:[
+
+                                {
+                                  name: "Varsity",
+                                  icon: "directions-run",
+                                  children:[
+                                    {
+                                      name: "Roster",
+                                      icon: "directions-run",
+                                    },
+                                    {
+                                      name: "Schedule"
+                                    },
+                                    {
+                                      name: "Scores"
+                                    }
+                                  ]
+                                },
+                            {
+                              name: "JV",
+                              icon: "directions-run",
+                              children:[
+                                {
+                                  name: "Roster",
+                                  icon: "directions-run",
+                                },
+                                {
+                                  name: "Schedule"
+                                },
+                                {
+                                  name: "Scores"
+                                }
+                              ]
+                                  },
+                                  {
+                                    name: "Freshmen",
+                                    children:[
+                                      {
+                                        name: "Roster",
+                                        icon: "directions-run",
+                                      },
+                                      {
+                                        name: "Schedule"
+                                      },
+                                      {
+                                        name: "Scores"
+                                      }
+                                    ]
+                                  }
+                              ]
+
+                          },
+              {
+                name: "Soccer",
+                icon: "home",
+                children:[
+                    {
+                      name: "Boys",
+                      children: [
+                        {
+                          name: "Varsity",
+                          icon: "directions-run",
+                          children:[
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                          ]
+                        },
+                    {
+                      name: "JV",
+                      icon: "directions-run",
+                      children:[
+                        {
+                          name: "Roster",
+                          icon: "directions-run",
+                        },
+                        {
+                          name: "Schedule"
+                        },
+                        {
+                          name: "Scores"
+                        }
+                      ]
+                          },
+
+                      ]
+                    },
+                    {
+                      name: "Girls",
+                      children: [
+                        {
+                          name: "Varsity",
+                          icon: "directions-run",
+                          children:[
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                          ]
+                        },
+                    {
+                      name: "JV",
+                      icon: "directions-run",
+                      children:[
+                        {
+                          name: "Roster",
+                          icon: "directions-run",
+                        },
+                        {
+                          name: "Schedule"
+                        },
+                        {
+                          name: "Scores"
+                        }
+                      ]
+                          },
+
+                      ]
+                    }
+
+                  ]
+              },
+              {
+                name: "Softball",
+                icon: "home",
+                children: [
                   {
                     name: "Varsity",
                     icon: "directions-run",
                     children:[
                       {
-                        name: "Events",
+                        name: "Roster",
                         icon: "directions-run",
-                        route: "Events",
-                        group:"BasketBall/Varsity/Events"
+                      },
+                      {
+                        name: "Schedule"
+                      },
+                      {
+                        name: "Scores"
                       }
                     ]
+                  },
+              {
+                name: "JV",
+                icon: "directions-run",
+                children:[
+                  {
+                    name: "Roster",
+                    icon: "directions-run",
+                  },
+                  {
+                    name: "Schedule"
+                  },
+                  {
+                    name: "Scores"
                   }
                 ]
+                    },
+
+                ]
+              },
+              {
+                name: "Swimmming",
+                icon: "home",
+                children:[
+                    {
+                      name: "Boys",
+                      children: [
+                        {
+                          name: "Varsity",
+                          icon: "directions-run",
+                          children:[
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                          ]
+                        },
+                    {
+                      name: "JV",
+                      icon: "directions-run",
+                      children:[
+                        {
+                          name: "Roster",
+                          icon: "directions-run",
+                        },
+                        {
+                          name: "Schedule"
+                        },
+                        {
+                          name: "Scores"
+                        }
+                      ]
+                          },
+
+                      ]
+                    },
+                    {
+                      name: "Girls",
+                      children: [
+                        {
+                          name: "Varsity",
+                          icon: "directions-run",
+                          children:[
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                          ]
+                        },
+                    {
+                      name: "JV",
+                      icon: "directions-run",
+                      children:[
+                        {
+                          name: "Roster",
+                          icon: "directions-run",
+                        },
+                        {
+                          name: "Schedule"
+                        },
+                        {
+                          name: "Scores"
+                        }
+                      ]
+                          },
+
+                      ]
+                    }
+
+                  ]
+              },
+              {
+                name: "Tennis",
+                icon: "home",
+                children:[
+                    {
+                      name: "Boys",
+                      children: [
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                      ]
+                    },
+                    {
+                      name: "Girls",
+                      children: [
+                        {
+                            name: "Roster",
+                            icon: "directions-run",
+                        },
+                        {
+                            name: "Schedule"
+                        },
+                        {
+                            name: "Scores"
+                        }
+                      ]
+                    }
+                  ]
+               },
+              {
+                name: "Track & Field",
+                icon: "home",
+                children:[
+                    {
+                      name: "Boys",
+                      children: [
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                      ]
+                    },
+                    {
+                      name: "Girls",
+                      children: [
+                        {
+                            name: "Roster",
+                            icon: "directions-run",
+                        },
+                        {
+                            name: "Schedule"
+                        },
+                        {
+                            name: "Scores"
+                        }
+                      ]
+                    }
+                  ]
+              },
+              {
+                name: "Volleyball",
+                icon: "home",
+                children: [
+                  {
+                    name: "Varsity",
+                    icon: "directions-run",
+                    children:[
+                      {
+                        name: "Roster",
+                        icon: "directions-run",
+                      },
+                      {
+                        name: "Schedule"
+                      },
+                      {
+                        name: "Scores"
+                      }
+                    ]
+                  },
+              {
+                name: "JV",
+                icon: "directions-run",
+                children:[
+                  {
+                    name: "Roster",
+                    icon: "directions-run",
+                  },
+                  {
+                    name: "Schedule"
+                  },
+                  {
+                    name: "Scores"
+                  }
+                ]
+                    },
+                    {
+                      name: "Freshmen",
+                      icon: "directions-run",
+                      children:[
+                        {
+                          name: "Roster",
+                          icon: "directions-run",
+                        },
+                        {
+                          name: "Schedule"
+                        },
+                        {
+                          name: "Scores"
+                        }
+                      ]
+                          },
+
+                ]
+              },
+              {
+                name: "Wrestling",
+                icon: "home",
+                children:[
+                    {
+                      name: "Boys",
+                      children: [
+                            {
+                              name: "Roster",
+                              icon: "directions-run",
+                            },
+                            {
+                              name: "Schedule"
+                            },
+                            {
+                              name: "Scores"
+                            }
+                      ]
+                    },
+                    {
+                      name: "Girls",
+                      children: [
+                        {
+                            name: "Roster",
+                            icon: "directions-run",
+                        },
+                        {
+                            name: "Schedule"
+                        },
+                        {
+                            name: "Scores"
+                        }
+                      ]
+                    }
+                  ]
               }
+
+
+
             ]
 
+          },
+          {
+            name: "Settings",
+            icon: "settings",
+            route: "Settings"
           }
       ]
 
