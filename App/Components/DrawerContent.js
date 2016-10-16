@@ -12,6 +12,7 @@ import {
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import icons from 'react-native-vector-icons/EvilIcons';
 import NavBar from './NavBar'
 
 
@@ -27,7 +28,29 @@ class DrawerContent extends Component {
           },
           {
             name: "Classes",
-            icon: "school"
+            icon: "school",
+            children: [
+              {
+                name: "Seniors",
+                icon: "home",
+                route: "Seniors"
+              },
+              {
+                name: "Juniors",
+                icon: "home",
+                route: "Juniors"
+              },
+              {
+                name: "Sophmores",
+                icon: "home",
+                route:"Sophmores"
+              },
+              {
+                name: "Freshmen",
+                icon: "home",
+                route: "Freshmen"
+              }
+            ]
           },
           {
             name: "Events",
@@ -41,13 +64,13 @@ class DrawerContent extends Component {
             children: [
               {
                 name: "Baseball",
-                icon: "home",
+                icon: "ei-link",
                 children: [
                   {
                     name: "Varsity",
                     children: [
                       {
-                        name: "Roster"
+                        name: "Roster",
                       },
                       {
                         name: "Schedule"
@@ -64,7 +87,7 @@ class DrawerContent extends Component {
                         name: "Roster"
                       },
                       {
-                        name: "Schedule"
+                        name: "Schedule",
                       },
                       {
                         name: "Scores"
@@ -612,6 +635,16 @@ class DrawerContent extends Component {
 
             ]
 
+          },
+          {
+            name: "Voting",
+            icon: "favorite",
+            route: "Voting"
+          },
+          {
+            name: "Bell Schedule",
+            icon: "alarm-on",
+            route: "BellSchedule"
           },
           {
             name: "Settings",

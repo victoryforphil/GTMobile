@@ -17,7 +17,10 @@ import Events from './Events'
 import Settings from './Settings'
 import BellSchedule from './BellSchedule'
 import Voting from './Voting'
-
+import Seniors from './Seniors'
+import Juniors from './Juniors'
+import Sophmores from './Sophmores'
+import Freshmen from './Freshmen'
 
 
 class NavBar extends Component {
@@ -40,7 +43,7 @@ class NavBar extends Component {
         panCloseMask={.2}
         panOpenMask={.2}
         acceptTap={true}
-
+        open={true}
         styles={drawerStyles}>
 
         <Navigator
@@ -93,7 +96,23 @@ case "Voting":
 return (
 <Voting navigator={navigator}/>
 )
-                          //Boys basketball Ends
+case "Seniors":
+return (
+<Seniors navigator={navigator}/>
+)
+case "Juniors":
+return (
+<Juniors navigator={navigator}/>
+)
+case "Sophmores":
+return (
+<Sophmores navigator={navigator}/>
+)
+case "Freshmen":
+return (
+<Freshmen navigator={navigator}/>
+)
+
 
 
     }

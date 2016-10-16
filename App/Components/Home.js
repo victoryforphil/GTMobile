@@ -37,7 +37,7 @@ name: "Classes"
           style={styles.homeImage}
           source={require('./GTHS.jpg')} />
 
-        <Events/>
+    
 
 
 

@@ -17,5 +17,5 @@ class Home extends Component {
     );
   }
 }
-
+d
 export default Home;
