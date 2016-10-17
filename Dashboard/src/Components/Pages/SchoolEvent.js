@@ -14,7 +14,8 @@ class SchoolEvent extends Component{
     if(cursor != null){
       this.setState({eventData: cursor})
     }else{
-      alert("Error Not Found!")
+      alert("Error Not Found!");
+      //test 
     }
 
   }
