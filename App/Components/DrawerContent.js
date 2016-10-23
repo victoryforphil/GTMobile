@@ -64,13 +64,14 @@ class DrawerContent extends Component {
             children: [
               {
                 name: "Baseball",
-                icon: "ei-link",
+                icon: "home",
                 children: [
                   {
                     name: "Varsity",
                     children: [
                       {
                         name: "Roster",
+                        route: "VarsityRosterBaseball"
                       },
                       {
                         name: "Schedule"

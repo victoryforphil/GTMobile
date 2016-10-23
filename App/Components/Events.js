@@ -49,7 +49,7 @@ class Events extends Component {
       <View style={styles.listItem}>
         <Text style={styles.title}>{rowData.name}</Text>
         <Text style={styles.date}>{rowData.date}</Text>
-        <Text style={styles.desc}>{rowData.desc}</Text>
+        <Text numberOfLines={2} style={styles.desc}>{rowData.desc}</Text>
 
       </View>
     )
@@ -102,12 +102,16 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: -20,
         marginBottom: 20,
+        padding: 10
     },
     date: {
+        flexDirection: 'column',
         fontSize: 15,
         color: '#00CED1',
         marginTop: -50,
         flex: 1,
+        marginRight: 200,
+        padding: 10
     },
     EventImage: {
       marginTop:0,
