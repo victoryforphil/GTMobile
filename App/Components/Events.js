@@ -48,8 +48,8 @@ class Events extends Component {
     return(
       <View style={styles.listItem}>
         <Text style={styles.title}>{rowData.name}</Text>
-        <Text style={styles.date}>{rowData.date}</Text>
-        <Text numberOfLines={2} style={styles.desc}>{rowData.desc}</Text>
+        <Text numberOfLines={3} style={styles.date}>{rowData.date}</Text>
+        <Text numberOfLines={1} style={styles.desc}>{rowData.desc}</Text>
 
       </View>
     )
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         padding: 15,
         margin: 10,
         backgroundColor: '#2C2F33',
-        marginBottom: -10,
+        marginBottom: 0,
         borderWidth: 1,
         borderColor: '#23272A',
         marginTop: 10,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         marginLeft: 90,
         flex: 1,
         marginTop: -20,
-        marginBottom: 20,
+        marginBottom: 0,
         padding: 10
     },
     date: {
@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
         marginTop: -50,
         flex: 1,
         marginRight: 200,
-        padding: 10
+        padding: 10,
+        marginBottom: 5
     },
     EventImage: {
       marginTop:0,

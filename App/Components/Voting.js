@@ -9,32 +9,18 @@ import {
 import NavBar from './NavBar'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+
+
+
 class Voting extends Component {
-  changeScreen = () => {
-this.props.navigator.push({
-name: "Home"
-})
-  }
-  seeya = () => {
-this.props.navigator.pop({
-name: "Home"
-})
-  }
 
   render() {
 
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-         Voting screen
-        </Text>
-        <TouchableOpacity style={styles.button} onPress={this.changeScreen}>
-          <Text style={ styles.DrwrTex}><Icon name="skip-next" size={30 } sytle={styles.icons}  />   Next</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this.seeya}>
-          <Text style={ styles.DrwrTex}><Icon name="skip-previous" size={30 } sytle={styles.icons}  />   Back</Text>
-        </TouchableOpacity>
-
+No current polls as of right now but comeback when there is a school dance approaching!
+    </Text>
 
       </View>
 
@@ -43,6 +29,10 @@ name: "Home"
     );
   }
 }
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -56,10 +46,6 @@ const styles = StyleSheet.create({
     margin: 10,
 
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
 });
 export default Voting;

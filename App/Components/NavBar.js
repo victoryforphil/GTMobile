@@ -22,7 +22,7 @@ import Seniors from './Seniors'
 import Juniors from './Juniors'
 import Sophmores from './Sophmores'
 import Freshmen from './Freshmen'
-
+import RosterVar from './Athletics/Baseball/VarsityBaseball/Roster/RosterVar'
 
 class NavBar extends Component {
 
