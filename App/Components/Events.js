@@ -47,7 +47,7 @@ class Events extends Component {
   renderItem(rowData){
     return(
       <View style={styles.listItem}>
-        <Text style={styles.title}>{rowData.name}</Text>
+        <Text numberOfLines={1} style={styles.title}>{rowData.name}</Text>
         <Text numberOfLines={3} style={styles.date}>{rowData.date}</Text>
         <Text numberOfLines={1} style={styles.desc}>{rowData.desc}</Text>
 

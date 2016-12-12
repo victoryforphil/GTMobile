@@ -4,7 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  Image,
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import NavBar from './NavBar'
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -24,20 +26,19 @@ name: "Home"
   render() {
 
     return (
+      <ScrollView>
+      <Text style={styles.welcome}>
+       Bell schedule screen
+      </Text>
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-         Bell schedule screen
-        </Text>
-        <TouchableOpacity style={styles.button} onPress={this.changeScreen}>
-          <Text style={ styles.DrwrTex}><Icon name="skip-next" size={30 } sytle={styles.icons}  />   Next</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this.seeya}>
-          <Text style={ styles.DrwrTex}><Icon name="skip-previous" size={30 } sytle={styles.icons}  />   Back</Text>
-        </TouchableOpacity>
+      <Image
+        style={styles.EventImage}
+        source={require('../bellschedule.png')} />
+
 
 
       </View>
-
+</ScrollView>
 
 
     );
@@ -53,7 +54,8 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    marginTop: 50,
+    marginBottom: 50
 
   },
   instructions: {
@@ -61,5 +63,12 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  EventImage: {
+    marginTop:30,
+    width:380,
+    height: 500,
+
+
+  }
 });
 export default BellSchedule;

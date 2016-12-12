@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity
 } from 'react-native';
 import NavBar from './NavBar'
@@ -15,6 +16,9 @@ class Freshmen extends Component {
 
     return (
       <View style={styles.container}>
+      <Image
+        style={styles.EventImage}
+        source={require('../freshmen.jpg')} />
         <Text style={styles.welcome}>
          Freshmen screen
         </Text>
@@ -46,5 +50,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  EventImage: {
+    marginTop:-350,
+    width:380,
+    height: 230
+  }
 });
 export default Freshmen;

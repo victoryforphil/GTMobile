@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity
 } from 'react-native';
 import NavBar from './NavBar'
@@ -15,6 +16,9 @@ class Seniors extends Component {
 
     return (
       <View style={styles.container}>
+      <Image
+        style={styles.EventImage}
+        source={require('../seniors.png')} />
         <Text style={styles.welcome}>
          Seniors screen
         </Text>
@@ -45,5 +49,10 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 5,
   },
+  EventImage: {
+    marginTop:-400,
+    width:380,
+    height: 230
+  }
 });
 export default Seniors;

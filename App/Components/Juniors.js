@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity
 } from 'react-native';
 import NavBar from './NavBar'
@@ -16,6 +17,9 @@ class Juniors extends Component {
 
     return (
       <View style={styles.container}>
+      <Image
+        style={styles.EventImage}
+        source={require('../juniors.jpg')} />
         <Text style={styles.welcome}>
          Juniors screen
         </Text>
@@ -42,5 +46,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  EventImage: {
+    marginTop:-400,
+    width:380,
+    height: 230
+  }
 });
 export default Juniors;

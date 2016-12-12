@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity
 } from 'react-native';
 import NavBar from './NavBar'
@@ -15,6 +16,9 @@ class Sophmores extends Component {
 
     return (
       <View style={styles.container}>
+      <Image
+        style={styles.EventImage}
+        source={require('../sophmore.png')} />
         <Text style={styles.welcome}>
          Sophmores screen
         </Text>
@@ -45,5 +49,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  EventImage: {
+    marginTop:-400,
+    width:380,
+    height: 230
+  }
 });
 export default Sophmores;
