@@ -11,10 +11,7 @@ import {
   Navigator
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import DrawerContent from './Components/DrawerContent.js';
-import NavBar from './Components/NavBar'
-import Home from './Components/Home'
-import Classes from './Components/Classes'
+import Index from './ComponenetsV2/Index';
 import * as firebase from 'firebase';
 
 class GTMobile extends Component {
@@ -35,7 +32,7 @@ class GTMobile extends Component {
 
   render() {
     return (
-  <NavBar />
+  <Index />
 
 
 
