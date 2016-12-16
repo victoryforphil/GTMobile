@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   View,
   Alert,
-  Navigator
+  Navigator,
+
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Index from './ComponenetsV2/Index';
@@ -27,6 +28,7 @@ class GTMobile extends Component {
       messagingSenderId: "697096842426"
     };
     firebase.initializeApp(config);
+
   }
 
 

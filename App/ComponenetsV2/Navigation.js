@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Alert,
-  Navigator
+  Navigator,
+    BackAndroid
 } from 'react-native';
 
 
@@ -26,6 +27,14 @@ class Navigation extends Component {
     };
 
     this.navigateTo.bind(this);
+    var self = this;
+    BackAndroid.addEventListener('hardwareBackPress', () => {
+      if (self._nav.getCurrentRoutes().length === 1  ) {
+        return false;
+      }
+      self._nav.pop();
+      return true;
+    });
   }
 
   render() {
