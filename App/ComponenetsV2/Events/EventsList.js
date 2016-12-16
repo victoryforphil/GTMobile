@@ -9,6 +9,7 @@ import {
   Dimensions,
   ScrollView,
   Image,
+  ActivityIndicator  ,
   Alert
 } from 'react-native';
 import * as firebase from 'firebase';
@@ -25,8 +26,13 @@ class EventsList extends Component {
     this.state = {
       dataSource: this.ds.cloneWithRows([]),
     };
+    this.loadData();
   }
   componentDidMount(){
+
+  }
+
+  loadData(){
     var self = this;
     const db = firebase.database().ref("Events/");
 
@@ -63,16 +69,28 @@ class EventsList extends Component {
       </TouchableOpacity>
     )
   }
+  checkLoading(){
+    var final;
 
+    if(this.state.dataSource.getRowCount() == 0){
+
+      final = (<ActivityIndicator size="large"/>)
+    }else{
+
+      final = (<ListView
+        style={styles.list}
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => this.renderItem(rowData)}
+      />)
+    }
+
+    return final;
+  }
   render() {
     return (
       <ScrollView keyboardShouldPersistTaps={true}>
       <View style={styles.view}>
-          <ListView
-            style={styles.list}
-            dataSource={this.state.dataSource}
-            renderRow={(rowData) => this.renderItem(rowData)}
-          />
+          {this.checkLoading()}
       </View>
       </ScrollView>
     );
