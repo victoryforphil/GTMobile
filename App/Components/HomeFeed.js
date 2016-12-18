@@ -19,7 +19,7 @@ class HomeFeed extends Component {
         <TouchableOpacity style={styles.instructions} >
       <Image
         style={styles.Feedimage}
-        source={require('./GTHS.jpg')} />
+        source={require('../Images/GTHS.jpg')} />
         <Text style={styles.welcome}>
 Football game tonight!        </Text>
 

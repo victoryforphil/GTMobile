@@ -35,9 +35,10 @@ name: "Classes"
 
         <Image
           style={styles.homeImage}
-          source={require('./GTHS.jpg')} />
+          source={require('../Images/GTHS.jpg')} />
 
-    
+
+
 
 
 

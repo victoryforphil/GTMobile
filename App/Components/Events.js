@@ -61,7 +61,7 @@ class Events extends Component {
       <View style={styles.view}>
       <Image
         style={styles.EventImage}
-        source={require('./GTHS.jpg')} />
+        source={require('../Images/GTHS.jpg')} />
           <ListView
             style={styles.list}
             dataSource={this.state.dataSource}
