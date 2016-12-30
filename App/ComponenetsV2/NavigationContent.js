@@ -13,7 +13,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import icons from 'react-native-vector-icons/EvilIcons';
-
+import * as firebase from 'firebase';
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
 
 class NavigationContent extends Component {
@@ -57,8 +58,35 @@ class NavigationContent extends Component {
 
     }
     componentDidMount(){
+      var self = this;
+        GoogleSignin.configure().then(function(){
+          GoogleSignin.currentUserAsync().then((user) => {
+            console.log('USER', user);
+            self.setState({user: user});
+          }).done();
+        });
+    }
+    signIn(){
+      GoogleSignin.signIn()
+        .then((user) => {
+          this.setState({user: user});
+        })
+        .catch((err) => {
+          console.log('WRONG SIGNIN', err);
+        })
+        .done();
+    }
+    signOut(){
+      GoogleSignin.signOut()
+        .then(() => {
+          GoogleSignin.currentUserAsync().then((user) => {
+            console.log('USER', user);
+            this.setState({user: user});
+        }).done();
+      })
+      .catch((err) => {
 
-      console.log(this.state.listMap);
+      });
     }
     handlePress(selected) {
         if (selected.children) {
@@ -89,12 +117,25 @@ class NavigationContent extends Component {
         currentList: newList.groups[newList.groups.length - 1].routes
       });
     }
+    signInRender(){
+      var self = this;
+      if(self.state.user != null){
+        return (
+          <TouchableOpacity style={styles.button} onPress={()=>{self.signOut()}}>
+            <Text style={{color: 'white'}}>Sign Out {self.state.user.name}</Text>
+          </TouchableOpacity>)
+      }else{
+        return(<GoogleSigninButton
+          style={{width: 312, height: 64}}
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Light}
+          onPress={self.signIn.bind(self)}/>)
+      }
+    }
   render(){
     var self = this;
 
-
     var backButton = () =>{
-
       if(this.state.canBack){
         return(
           <TouchableOpacity style={styles.button} onPress={()=>{self.handleBack()}}>
@@ -112,8 +153,10 @@ class NavigationContent extends Component {
         );
       });
     }
+
     return(
       <ScrollView >
+        {this.signInRender()}
         {backButton()}
         {sideBarItems}
       </ScrollView>)

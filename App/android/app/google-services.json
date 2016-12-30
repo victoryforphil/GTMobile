@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "304425153422",
+    "project_id": "phlic-chat"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304425153422:android:64fee0e03c9dd0e4",
+        "android_client_info": {
+          "package_name": "com.gtmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304425153422-nc963tev54i47547fvagvgi897inq8f3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gtmobile",
+            "certificate_hash": "18FC7542816678EB943EDEE5CD30B3D3F8478EB9"
+          }
+        },
+        {
+          "client_id": "304425153422-ph4o2tu9medjvdsk79isvo8g2c8a1ksa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5bBSIdsFrD7Ek0HWWIhsflPCjJPTAC4o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,7 +12,7 @@ class NavBar extends Component {
       <nav>
         <div className="nav-wrapper blue">
           <a href="#" className="brand-logo">
-            GT Mobile
+            GT Mobile Dashboard
           </a>
           <ul
             id="nav-mobile"

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "693987655196",
+    "project_id": "api-project-693987655196"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693987655196:android:004f515ce7f93e99",
+        "android_client_info": {
+          "package_name": "com.atecstudios.gtmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693987655196-k5neg5bvodplcmd8pcjq9h6gtmg6pmkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.atecstudios.gtmobile",
+            "certificate_hash": "18FC7542816678EB943EDEE5CD30B3D3F8478EB9"
+          }
+        },
+        {
+          "client_id": "693987655196-500b1jer3pn67kdsdg84pefbpdbrc81p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPrTIudI5BUOhwzCACkSEHOtnKMEMOt7o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,7 +15,10 @@ import DrawerContent from "./NavigationContent"
 
 import HomePage from "./Home/HomePage.js"
 import EventsPage from "./Events/EventsPage.js"
+import EventsList from "./Events/EventsList.js"
 import EventDetailPage from "./Events/EventDetailPage"
+import PollsPage from "./Polls/PollsPage"
+import PollDetailPage from "./Polls/PollDetailPage"
 class Navigation extends Component {
 
 //TODO: Dont Navigate if already on Page
@@ -35,6 +38,7 @@ class Navigation extends Component {
       self._nav.pop();
       return true;
     });
+
   }
 
   render() {
@@ -93,7 +97,9 @@ class Navigation extends Component {
         case "EventDetailPage":
           return (<EventDetailPage nav={self} data={route.data}/> )
         case "Polls":
-          return (<PollPage nav={self }/> )                  //Girls Volleyball Ends
+          return (<PollsPage nav={self }/> )
+        case "PollDetailPage":
+            return (<PollDetailPage nav={self } data={route.data}/> )                 //Girls Volleyball Ends
       }
     }
   }

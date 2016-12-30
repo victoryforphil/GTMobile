@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -32,6 +31,11 @@
 		AF2337D39804488FA47C8744 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAE0C7B44804C0B92583F4F /* libRNVectorIcons.a */; };
 		BE29C2D661224362BE989083 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D47EB0A4E6E4CBFB16D17F3 /* EvilIcons.ttf */; };
 		D7973B0AA973481399A195BB /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29390892BAF040C5BD366068 /* Ionicons.ttf */; };
+		37185F72229A435C9EFA00FD /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D0AAEA67894E7F82808699 /* libRNGoogleSignin.a */; };
+		53CD84F47C7E4B589FEE842C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCDC9A6355D4FC0B2C1AA2F /* libz.tbd */; };
+		E6F5F2395C1E437AAEE51F78 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420D54E153424FE8909EB4F3 /* SafariServices.framework */; };
+		7DA944B8EA2B4314AB8EF587 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCCACE922E2149BCB37EC854 /* SystemConfiguration.framework */; };
+		A4C24FB133C8487989107E3D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D843CB063B4EF984346833 /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +157,12 @@
 		B79467994FFA43CFA2733E07 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		BBC619AAD2994BA882CA9FAA /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		CD145F473F214E31B41A06AB /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		555F7F2BF3714953A3A4699A /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; name = "RNGoogleSignin.xcodeproj"; path = "../../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		01D0AAEA67894E7F82808699 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; name = "libRNGoogleSignin.a"; path = "libRNGoogleSignin.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		7DCDC9A6355D4FC0B2C1AA2F /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		420D54E153424FE8909EB4F3 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		FCCACE922E2149BCB37EC854 /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		E1D843CB063B4EF984346833 /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +189,11 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				AF2337D39804488FA47C8744 /* libRNVectorIcons.a in Frameworks */,
+				37185F72229A435C9EFA00FD /* libRNGoogleSignin.a in Frameworks */,
+				53CD84F47C7E4B589FEE842C /* libz.tbd in Frameworks */,
+				E6F5F2395C1E437AAEE51F78 /* SafariServices.framework in Frameworks */,
+				7DA944B8EA2B4314AB8EF587 /* SystemConfiguration.framework in Frameworks */,
+				A4C24FB133C8487989107E3D /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +332,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				74B02A3B74174377BDAA2283 /* RNVectorIcons.xcodeproj */,
+				555F7F2BF3714953A3A4699A /* RNGoogleSignin.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -337,6 +353,7 @@
 				00E356EF1AD99517003FC87E /* GTMobileTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				6912F38F69C2486FAC9DDC08 /* Resources */,
+				873E206E89664217AE3B24FE /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -357,6 +374,18 @@
 				87D1A2081DB287D300F5E880 /* libRNVectorIcons.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		873E206E89664217AE3B24FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DCDC9A6355D4FC0B2C1AA2F /* libz.tbd */,
+				420D54E153424FE8909EB4F3 /* SafariServices.framework */,
+				FCCACE922E2149BCB37EC854 /* SystemConfiguration.framework */,
+				E1D843CB063B4EF984346833 /* AddressBook.framework */,
+			);
+			name = Frameworks;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -661,6 +690,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GTMobile.app/GTMobile";
@@ -677,6 +707,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -696,6 +727,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)\..\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
 				);
 				INFOPLIST_FILE = GTMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -721,6 +753,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)\..\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
 				);
 				INFOPLIST_FILE = GTMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -774,6 +807,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)\..\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -815,6 +849,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)\..\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

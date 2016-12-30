@@ -6,30 +6,29 @@ import {
   View,
   TouchableOpacity,
   Image,
+  Alert,
   ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import * as firebase from 'firebase';
 
 class HomePage extends Component {
 
+  componentDidMount(){
 
+  }
+  
   render() {
 
     return (
-  <View style={styles.container}>
-  <ScrollView>
+      <View style={styles.container}>
 
-
-        <Image
-          style={styles.homeImage}
-          source={require('../../Images/GTHS.jpg')} />
-
-
-
-
-
-</ScrollView>
-    </View>
+        <ScrollView>
+          <Image
+            style={styles.homeImage}
+            source={require('../../Images/GTHS.jpg')} />
+        </ScrollView>
+      </View>
     );
   }
 
