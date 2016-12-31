@@ -29,12 +29,12 @@ class NavigationContent extends Component {
           },
           {
             name: "Events",
-            icon: "favorite",
+            icon: "date-range",
             route: "Events"
           },
           {
             name: "Voting",
-            icon: "favorite",
+            icon: "check-circle",
             route: "Polls"
           },
           {
@@ -148,7 +148,8 @@ class NavigationContent extends Component {
       var sideBarItems = this.state.currentList.map(function(item,i) {
         return (
           <TouchableOpacity key={i} style={styles.button} onPress={()=>{self.handlePress(item)}}>
-            <Text style={styles.DrwrTex}><Icon name={item.icon} size={30 } sytle={styles.icons} />{item.name}</Text>
+            <Icon name={item.icon} size={30 } sytle={styles.icons} color={'#00CED1'}/>
+            <Text style={styles.DrwrTex}>{item.name}</Text>
           </TouchableOpacity>
         );
       });
@@ -167,8 +168,10 @@ const styles = StyleSheet.create({
         borderWidth: .5,
         borderColor: 'black',
         padding: 25,
-        flexDirection: 'row'
+        flexDirection: 'row',
 
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     backbutton: {
         borderWidth: .5,
@@ -186,11 +189,13 @@ const styles = StyleSheet.create({
     },
     icons: {
         color: '#00CED1',
-        padding: 30,
-        marginTop: 15
+
     },
     DrwrTex: {
-        color: '#00CED1'
+        color: '#00CED1',
+        fontSize: 18,
+        marginLeft: 10,
+
     }
 })
 export default NavigationContent

@@ -21,7 +21,7 @@ class EventDetailPage extends Component {
             <Text style={styles.dateText}>{this.props.data.date}</Text>
         </View>
         <View style={styles.panel}>
-            <Text style={styles.titleText}>{this.props.data.desc}</Text>
+            <Text style={styles.descText} numberOfLines={5}>{this.props.data.desc}</Text>
         </View>
 
 
@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
       marginLeft: 50,
       marginTop: 3,
       color: 'cyan'
-    }
+    },
+    titleText:{
+      marginRight: 50,
+      fontSize: 18,
+      color: 'grey'
+    },
 })
 export default EventDetailPage;
