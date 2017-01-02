@@ -19,6 +19,8 @@ import EventsList from "./Events/EventsList.js"
 import EventDetailPage from "./Events/EventDetailPage"
 import PollsPage from "./Polls/PollsPage"
 import PollDetailPage from "./Polls/PollDetailPage"
+import BellSchedulePage from "./BellSchedule/BellSchedulePage"
+
 class Navigation extends Component {
 
 //TODO: Dont Navigate if already on Page
@@ -99,7 +101,9 @@ class Navigation extends Component {
         case "Polls":
           return (<PollsPage nav={self }/> )
         case "PollDetailPage":
-            return (<PollDetailPage nav={self } data={route.data}/> )                 //Girls Volleyball Ends
+            return (<PollDetailPage nav={self } data={route.data}/> )
+        case "BellSchedule":
+            return (<BellSchedulePage nav={self }/> )
       }
     }
   }
