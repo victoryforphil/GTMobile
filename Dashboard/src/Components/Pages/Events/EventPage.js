@@ -38,7 +38,7 @@ class EventPage extends Component {
 
 class EventList extends Component{
   renderItem(item){
-    return (<a className="collection-item">{item.name}</a>)
+    return (<a className="collection-item">{item.name} <small><i>({item._id}</i>)</small></a>)
   }
 
   render(){

@@ -102,6 +102,8 @@ router.route('/schoolevents/:event_id')
                    res.send(err);
 
                res.json({ message: 'Event updated!' });
+               io.emit('UPDATE_EVENTS');
+               console.log("[SocketIO] Alerting Clients of Update!");
            });
 
        });
@@ -114,6 +116,8 @@ router.route('/schoolevents/:event_id')
                 res.send(err);
 
             res.json({ message: 'Successfully deleted' });
+            io.emit('UPDATE_EVENTS');
+            console.log("[SocketIO] Alerting Clients of Update!");
         });
     });
 
