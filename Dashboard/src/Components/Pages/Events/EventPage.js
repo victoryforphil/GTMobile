@@ -8,21 +8,22 @@ import {
 import React, {
     Component
 } from 'react';
-
-import {connect, bindActionCreators} from "react-redux"
-import {fetchEvents} from "../../../actions/eventActions"
+import {bindActionCreators} from 'redux';
+import {connect} from "react-redux"
+import * as eventActions from "../../../actions/eventActions"
 
 function mapStateToProps(state) {
   return{events: state.events}
 }
 function mapDispatchToProps(dispatch){
-  return{ fetchEvents: dispatch(fetchEvents()) }
+  return{ actions: bindActionCreators(eventActions,dispatch) }
 }
 
 class EventPage extends Component {
 
     componentWillMount(){
-      this.props.fetchEvents;
+      this.props.actions.fetchEvents();
+
     }
     render() {
       return(
@@ -52,4 +53,7 @@ class EventList extends Component{
   }
 }
 
+class CreateEvent extends Component{
+
+}
 export default connect(mapStateToProps,mapDispatchToProps)(EventPage);
