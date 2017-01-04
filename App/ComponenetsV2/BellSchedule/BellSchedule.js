@@ -32,7 +32,7 @@ class BellSchedule extends Component {
       var tempList =[];
 
       snap.forEach(data => {
-          if(data.key != "currentPeriod"){
+          if(data.key == "currentPeriod"){
             this.state.currentPeroid = data.value();
           }else{
             tempList.push(data.val());

@@ -24,7 +24,7 @@ class PollsList extends Component {
 
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: this.ds.cloneWithRows([]),
+      polls: [],
     };
     this.loadData();
   }
@@ -40,18 +40,14 @@ class PollsList extends Component {
       var tempList =[];
 
       snap.forEach(data => {
-        if(this.props.group){
-          if(data.val().group == this.props.group){
-            tempList.push(data.val())
-          }
-        }else{
-          tempList.push(data.val())
-        }
+        var dataObj = data.val();
+        dataObj.key = data.key;
+        tempList.push(dataObj)
       });
 
 
-      this.setState({dataSource: self.ds.cloneWithRows(tempList)});
-
+      this.setState({polls: tempList});
+      console.log("Loaded Poll Data: ", this.state);
     });
   }
   onPress (data) {
@@ -60,7 +56,7 @@ class PollsList extends Component {
   renderItem(rowData){
     var self = this;
     return(
-      <TouchableOpacity style={styles.listItem} onPress={()=>{self.onPress(rowData)}}>
+      <TouchableOpacity style={styles.listItem} onPress={()=>{self.onPress(this.GetPollByID(rowData.key))}}>
         <Text style={styles.title}>{rowData.name}</Text>
         <Text style={styles.date}>Poll Opens: {rowData.startDate}</Text>
         <Text style={styles.date}>Poll Closes: {rowData.endDate}</Text>
@@ -71,14 +67,14 @@ class PollsList extends Component {
   checkLoading(){
     var final;
 
-    if(this.state.dataSource.getRowCount() == 0){
+    if(this.state.polls.length == 0){
 
       final = (<ActivityIndicator size="large"/>)
     }else{
 
       final = (<ListView
         style={styles.list}
-        dataSource={this.state.dataSource}
+        dataSource={this.ds.cloneWithRows(this.state.polls)}
         renderRow={(rowData) => this.renderItem(rowData)}
       />)
     }
@@ -93,6 +89,14 @@ class PollsList extends Component {
       </View>
       </ScrollView>
     );
+  }
+
+  GetPollByID(key){
+    for (var i = 0; i < this.state.polls.length; i++) {
+      if(this.state.polls[i].key == key){
+        return this.state.polls[i];
+      }
+    }
   }
 }
 

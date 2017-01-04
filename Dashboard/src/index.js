@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-
+import {Provider} from "react-redux"
 import * as firebase from 'firebase';
+
+import store from "./store"
 
 const config = {
 
@@ -16,6 +18,8 @@ const config = {
 firebase.initializeApp(config);
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App/>
+  </Provider>,
   document.getElementById('root')
 );
