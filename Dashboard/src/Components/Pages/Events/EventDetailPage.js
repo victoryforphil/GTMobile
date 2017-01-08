@@ -13,6 +13,8 @@ import {connect} from "react-redux"
 
 import {FlatButton, Card, CardHeader, CircularProgress ,CardText,CardActions, TextField, Subheader, List, ListItem, Snackbar} from 'material-ui';
 
+import EventSettings from "./EventSettings"
+
 import * as eventActions from "../../../actions/eventActions"
 function mapStateToProps(state) {
   return{event: state.events.currentEvent}
@@ -25,44 +27,14 @@ class EventDetailPage extends Component {
 
     constructor(props){
       super(props);
-      this.state = {
-        event:{
-          name: "[EVENT]"
-        },
-        name: "",
-        desc: ""
-      }
     }
 
     componentWillMount(){
       this.props.actions.fetchEvent(this.props.params.id);
     }
-    componentWillReceiveProps(nextProps) {
-      console.log("NEW PROPS:" , nextProps);
-      if(!nextProps.event.data){
-        return;
-      }
-      this.setState({
-        event:  nextProps.event.data,
-        name: nextProps.event.data.name,
-        desc: nextProps.event.data.desc
-      });
-    }
 
-    _onNameChange(event, text){
-      this.setState({
-        name:text
-      });
-    }
-
-    _onDescChange(event, text){
-      this.setState({
-        desc:text
-      });
-    }
-
-    _submitChanges(){
-      this.props.actions.updateEvent(this.props.event.data._id, this.state);
+    _submitChanges(data){
+      this.props.actions.updateEvent(this.props.event.data._id, data);
     }
 
     isLoading(render){
@@ -74,31 +46,11 @@ class EventDetailPage extends Component {
     }
 
     render() {
-
+      console.log(this.props.event);
       return(
         <div className="container">
 
-          <Card>
-            <CardHeader>
-              {this.state.event.name} Settings
-            </CardHeader>
-            <CardText>
-              <TextField
-                floatingLabelText="Event Name"
-                onChange={this._onNameChange.bind(this)}
-                value={this.state.name}
-                />
-              <TextField
-                defaultValue=""
-                floatingLabelText="Event Description"
-                value={this.state.desc}
-                onChange={this._onDescChange.bind(this)}
-              />
-            </CardText>
-            <CardActions>
-                <FlatButton label="Update" onTouchTap={this._submitChanges.bind(this)}/>
-            </CardActions>
-          </Card>
+          <EventSettings title={"Update"} event={this.props.event} buttonText={"Update"}onSubmit={this._submitChanges.bind(this)}/>
 
 
         </div>

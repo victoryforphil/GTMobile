@@ -41,6 +41,8 @@ router.route('/schoolevents')
         _schoolEvent.desc = req.body.desc;
         _schoolEvent.startDate = req.body.startDate;
         _schoolEvent.endDate = req.body.endDate;
+        _schoolEvent.startTime = req.body.startTime;
+        _schoolEvent.endTime = req.body.endTime;
         if(!_schoolEvent.name){
           var response = Responses.CREATE_EVENT_FAILED;
           response.error = "Please enter a name for the event!";
@@ -89,15 +91,19 @@ router.route('/schoolevents/:event_id')
     .put(function(req, res) {
       console.log("PUTTING!");
        // use our bear model to find the bear we want
-       SchoolEvent.findById(req.params.event_id, function(err, event) {
+       SchoolEvent.findById(req.params.event_id, function(err, _schoolEvent) {
 
            if (err)
                res.send(err);
 
-           event.name = req.body.name;  // update the bears info
-           event.desc = req.body.desc;  // update the bears info
+           _schoolEvent.name = req.body.name;  // update the bears info
+           _schoolEvent.desc = req.body.desc;  // update the bears info
+           _schoolEvent.startDate = req.body.startDate;
+           _schoolEvent.endDate = req.body.endDate;
+           _schoolEvent.startTime = req.body.startTime;
+           _schoolEvent.endTime = req.body.endTime;
            // save the bear
-           event.save(function(err) {
+           _schoolEvent.save(function(err) {
                if (err)
                    res.send(err);
 

@@ -11,7 +11,9 @@ import React, {
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux"
 
-import {FlatButton, Card, CardHeader, CardText,CardActions, TextField, Subheader, List, ListItem, Snackbar} from 'material-ui';
+import {FlatButton, DatePicker, Card, CardHeader, CardText,CardActions, TextField, Subheader, List, ListItem, Snackbar, TimePicker} from 'material-ui';
+
+import EventSettings from "./EventSettings"
 
 import * as eventActions from "../../../actions/eventActions"
 function mapStateToProps(state) {
@@ -37,7 +39,7 @@ class EventPage extends Component {
       return(
         <div className="container">
           <h1>Events</h1>
-          <CreateEvent createEvent = {this._createEvent.bind(this)}/>
+          <EventSettings title="Create Event" buttonText="Create" onSubmit = {this._createEvent.bind(this)}/>
           <EventList data={this.props.events.eventsList.data}/>
 
         </div>
@@ -52,16 +54,23 @@ class EventList extends Component{
   }
 
   render(){
-    const listItems = this.props.data.map((item) =>
-      <div>{this.renderItem(item)}</div>
-    );
+    var self = this;
+    const listItems = function(){
+      if(self.props.data){
+        return(self.props.data.map((item) =>
+          <div>{self.renderItem(item)}</div>
+        ))
+      }else{
+        return(<h1>Loading...</h1>)
+      }
+    }
 
     return(
       <Card>
         <CardText>
         <List >
           <Subheader>All Events </Subheader>
-          {listItems}
+          {listItems()}
         </List>
         </CardText>
       </Card>
@@ -71,58 +80,4 @@ class EventList extends Component{
   }
 }
 
-class CreateEvent extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      name: "",
-      desc: ""
-    }
-  }
-
-  componentDidMount() {
-  }
-
-
-  _onNameChange(event, newText){
-    this.setState({name: newText});
-  }
-
-  _onDescChange(event, newText){
-    this.setState({desc: newText});
-  }
-
-  _onCreateButton(){
-    this.props.createEvent(this.state);
-  }
-
-  render(){
-    return(
-     <Card>
-      <CardHeader
-        title="Create New School Event"
-        actAsExpander={true}
-        showExpandableButton={true}
-      />
-      <CardText expandable={true}>
-        <TextField
-
-          floatingLabelText="Event Name"
-          onChange={this._onNameChange.bind(this)}
-        />
-
-        <TextField
-          defaultValue=""
-          floatingLabelText="Event Description"
-          onChange={this._onDescChange.bind(this)}
-        />
-       </CardText>
-      <CardActions>
-        <FlatButton label="Create" onTouchTap={this._onCreateButton.bind(this)}/>
-      </CardActions>
-
-     </Card>
-    )
-  }
-}
 export default connect(mapStateToProps,mapDispatchToProps)(EventPage);
