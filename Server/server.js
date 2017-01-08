@@ -35,7 +35,7 @@ router.get('/', function(req, res) {
 
 router.route('/schoolevents')
     .post(function(req, res) {
-
+        console.log(req.body);
         var _schoolEvent = new SchoolEvent();
         _schoolEvent.name = req.body.name;
         _schoolEvent.desc = req.body.desc;
@@ -87,7 +87,7 @@ router.route('/schoolevents/:event_id')
         });
     })
     .put(function(req, res) {
-
+      console.log("PUTTING!");
        // use our bear model to find the bear we want
        SchoolEvent.findById(req.params.event_id, function(err, event) {
 
@@ -102,7 +102,7 @@ router.route('/schoolevents/:event_id')
                    res.send(err);
 
                res.json({ message: 'Event updated!' });
-               io.emit('UPDATE_EVENTS');
+               io.emit('UPDATE_EVENT', req.params.event_id);
                console.log("[SocketIO] Alerting Clients of Update!");
            });
 

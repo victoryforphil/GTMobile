@@ -5,30 +5,22 @@ import {
     browserHistory
 } from 'react-router'
 import React, {Component} from 'react';
-
+import {FlatButton,AppBar} from 'material-ui';
 class NavBar extends Component {
   render() {
     return (
-      <nav>
-        <div className="nav-wrapper blue">
-          <a href="#" className="brand-logo">
-            GT Mobile Dashboard
-          </a>
-          <ul
-            id="nav-mobile"
-            className="right hide-on-med-and-down">
-            <li>
-              <Link to={`/events`}>Events</Link>
-            </li>
-            <li>
-              <a href="badges.html">Components</a>
-            </li>
-            <li>
-              <a href="collapsible.html">JavaScript</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <AppBar
+        title="GT Mobile"
+        iconClassNameRight="muidocs-icon-navigation-expand-more"
+        iconElementRight={
+          <div>
+            <FlatButton href="/" label="Home"/>
+            <FlatButton href="/events" label="Events" />
+            <FlatButton href="/events" label="Polls" />
+            <FlatButton href="/events" label="Bells" />
+          </div>
+        }
+      />
     )
     }
 }
