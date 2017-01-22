@@ -17,7 +17,7 @@ class NavBar extends Component {
             <FlatButton href="/" label="Home"/>
             <FlatButton href="/events" label="Events" />
             <FlatButton href="/events" label="Polls" />
-            <FlatButton href="/events" label="Bells" />
+            <FlatButton href="/bells" label="Bells" />
           </div>
         }
       />

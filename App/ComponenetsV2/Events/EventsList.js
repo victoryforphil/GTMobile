@@ -10,12 +10,26 @@ import {
   ScrollView,
   Image,
   ActivityIndicator  ,
-  Alert
+  Alert,
+  RefreshControl
 } from 'react-native';
 import * as firebase from 'firebase';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-const winWidth = Dimensions.get('window').width
+const winWidth = Dimensions.get('window').width;
+
+import {bindActionCreators} from 'redux';
+import {connect} from "react-redux"
+
+import * as eventActions from "../../actions/eventActions"
+function mapStateToProps(state) {
+  return{events: state.events}
+}
+function mapDispatchToProps(dispatch){
+  return{ actions: bindActionCreators(eventActions,dispatch) }
+}
+
+
 class EventsList extends Component {
 
   constructor(props){
@@ -25,45 +39,40 @@ class EventsList extends Component {
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: this.ds.cloneWithRows([]),
+       refreshing: false,
     };
-    this.loadData();
+
+    this.props.actions.fetchEvents();
   }
   componentDidMount(){
 
   }
 
-  loadData(){
-    var self = this;
-    const db = firebase.database().ref("Events/");
-
-    db.on('value', snap => {
-      var tempList =[];
-
-      snap.forEach(data => {
-        if(this.props.group){
-          if(data.val().group == this.props.group){
-            tempList.push(data.val())
-          }
-        }else{
-          tempList.push(data.val())
-        }
-      });
-
-
-      this.setState({dataSource: self.ds.cloneWithRows(tempList)});
-
-    });
+  _onRefresh() {
+    this.props.actions.fetchEvents();
   }
   onPress (data) {
 
     this.props.nav.navigateTo("EventDetailPage", data);
+  }
+
+  convertDate(date, time){
+    var dateObj = new Date(date);
+    var timeObj = new Date(time);
+
+    var mins = timeObj.getMinutes();
+    if(mins < 10){
+      mins = "0"+mins;
+    }
+    return("" + (dateObj.getMonth() + 1)+ "/" + dateObj.getDate() + "/" + dateObj.getFullYear() + " - "  + timeObj.getHours() + ":"+mins)
   }
   renderItem(rowData){
     var self = this;
     return(
       <TouchableOpacity style={styles.listItem} onPress={()=>{self.onPress(rowData)}}>
         <Text style={styles.title}>{rowData.name}</Text>
-        <Text style={styles.date}>{rowData.date}</Text>
+        <Text style={styles.date}>{this.convertDate(rowData.startDate,rowData.startTime)}</Text>
+        <Text style={styles.date}>{this.convertDate(rowData.endDate,rowData.endTime)}</Text>
         <Text numberOfLines={2} style={styles.desc}>{rowData.desc}</Text>
 
       </TouchableOpacity>
@@ -72,14 +81,19 @@ class EventsList extends Component {
   checkLoading(){
     var final;
 
-    if(this.state.dataSource.getRowCount() == 0){
+    if(!this.props.events.eventsList.data){
 
       final = (<ActivityIndicator size="large"/>)
     }else{
-
       final = (<ListView
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }
         style={styles.list}
-        dataSource={this.state.dataSource}
+        dataSource={this.ds.cloneWithRows(this.props.events.eventsList.data)}
         renderRow={(rowData) => this.renderItem(rowData)}
       />)
     }
@@ -87,6 +101,7 @@ class EventsList extends Component {
     return final;
   }
   render() {
+    console.log(this.props.events.eventsList.data);
     return (
       <ScrollView keyboardShouldPersistTaps={true}>
       <View style={styles.view}>
@@ -117,26 +132,23 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        flex: 1,
         color: 'white',
-        marginBottom: 50,
+        marginBottom: 0,
     },
     desc: {
         fontSize: 15,
         color: 'grey',
-        flex: 1,
-        marginTop: -20,
-        marginBottom: 20,
+        marginBottom: 5,
         padding: 10
     },
     date: {
         flexDirection: 'column',
         fontSize: 15,
         color: '#00CED1',
-        marginTop: -50,
-        flex: 1,
+
+
         marginRight: 200,
-        padding: 10
+        padding: 5
     },
     EventImage: {
       marginTop:0,
@@ -145,4 +157,4 @@ const styles = StyleSheet.create({
     }
 
 });
-export default EventsList;
+export default connect(mapStateToProps,mapDispatchToProps)(EventsList);

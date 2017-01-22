@@ -14,34 +14,34 @@ import {connect} from "react-redux"
 
 import {FlatButton, DatePicker, Card, CardHeader, CardText,CardActions, TextField, Subheader, List, ListItem, Snackbar, TimePicker} from 'material-ui';
 
-import EventSettings from "./EventSettings"
+import BellSettings from "./BellSettings"
 
-import * as eventActions from "../../../actions/eventActions"
+import * as bellActions from "../../../actions/bellActions"
 function mapStateToProps(state) {
-  return{events: state.events}
+  return{bells: state.bells}
 }
 function mapDispatchToProps(dispatch){
-  return{ actions: bindActionCreators(eventActions,dispatch) }
+  return{ actions: bindActionCreators(bellActions,dispatch) }
 }
 
-class EventPage extends Component {
+class BellPage extends Component {
 
     componentWillMount(){
-      this.props.actions.fetchEvents();
+      this.props.actions.fetchBells();
 
     }
 
-    _createEvent(data){
-      this.props.actions.createEvent(data);
+    _createBell(data){
+      this.props.actions.createBell(data);
     }
 
     render() {
-      console.log(this.props.events.eventsList);
+
       return(
         <div className="container">
           <h1>Events</h1>
-          <EventSettings title="Create Event" buttonText="Create" onSubmit = {this._createEvent.bind(this)}/>
-          <EventList data={this.props.events.eventsList.data}/>
+          <BellSettings title="Create Bell" buttonText="Create" onSubmit = {this._createBell.bind(this)}/>
+          <BellList data={this.props.bells.bellList.data}/>
 
         </div>
       )
@@ -49,9 +49,9 @@ class EventPage extends Component {
 }
 
 
-class EventList extends Component{
+class BellList extends Component{
   renderItem(item){
-    return (<ListItem href={"event/"+item._id} primaryText={item.name} secondaryText={item._id}/>)
+    return (<ListItem href={"bell/"+item._id} primaryText={item.date} secondaryText={item._id}/>)
   }
 
   render(){
@@ -81,4 +81,4 @@ class EventList extends Component{
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(EventPage);
+export default connect(mapStateToProps,mapDispatchToProps)(BellPage);
