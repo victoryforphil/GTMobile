@@ -2,7 +2,8 @@ import {
     Router,
     Route,
     Link,
-    browserHistory
+    browserHistory,
+
 } from 'react-router'
 
 import React, {
@@ -12,8 +13,15 @@ import React, {
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux"
 
-import {FlatButton, DatePicker, Card, CardHeader, CardText,CardActions, TextField, Subheader, List, ListItem, Snackbar, TimePicker} from 'material-ui';
+import {FlatButton, DatePicker, Card, CardHeader, CardText,CardActions, TextField, Subheader, List, ListItem, Snackbar, TimePicker,
+  Popover,
+  Menu,
 
+  IconButton,
+  IconMenu,
+  MenuItem,} from 'material-ui';
+  import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import BellSettings from "./BellSettings"
 
 import * as bellActions from "../../../actions/bellActions"
@@ -30,9 +38,29 @@ class BellPage extends Component {
       this.props.actions.fetchBells();
 
     }
+    _duplicate(data){
+      console.log(data );
+      this.props.actions.createBell(data);
+      var self = this;
+      setTimeout(function () {
+        self.props.actions.fetchBells();
+      }, 500);
+    }
 
+    _delete(id){
+
+      this.props.actions.deleteBell(id);
+      var self = this;
+      setTimeout(function () {
+        self.props.actions.fetchBells();
+      }, 500);
+    }
     _createBell(data){
       this.props.actions.createBell(data);
+      var self = this;
+      setTimeout(function () {
+        self.props.actions.fetchBells();
+      }, 500);
     }
 
     render() {
@@ -41,7 +69,7 @@ class BellPage extends Component {
         <div className="container">
           <h1>Events</h1>
           <BellSettings title="Create Bell" buttonText="Create" onSubmit = {this._createBell.bind(this)}/>
-          <BellList data={this.props.bells.bellList.data}/>
+          <BellList data={this.props.bells.bellList.data} duplicate={this._duplicate.bind(this)} delete={this._delete.bind(this)}/>
 
         </div>
       )
@@ -50,8 +78,45 @@ class BellPage extends Component {
 
 
 class BellList extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false,
+    };
+  }
+
+
   renderItem(item){
-    return (<ListItem href={"bell/"+item._id} primaryText={item.date} secondaryText={item._id}/>)
+    const iconButtonElement = (
+      <IconButton
+        touch={true}
+        tooltip="more"
+        tooltipPosition="bottom-left">
+      <MoreVertIcon color={grey400} />
+      </IconButton>
+    );
+
+    const rightIconMenu = (
+      <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem href={"/bell/"+item._id}>Edit</MenuItem>
+        <MenuItem onTouchTap={this.props.duplicate.bind(this,item)}>Duplicate</MenuItem>
+        <MenuItem onTouchTap={this.props.delete.bind(this,item._id)}>Delete</MenuItem>
+      </IconMenu>
+    );
+
+    return (
+
+      <div>
+        <ListItem
+
+          rightIconButton={rightIconMenu}
+          primaryText={"" + (new Date(item.date).getMonth() + 1)+ "/" + new Date(item.date).getDate() + "/" + new Date(item.date).getFullYear()}
+          secondaryText={item._id}
+        />
+
+      </div>
+      )
   }
 
   render(){
@@ -72,6 +137,21 @@ class BellList extends Component{
         <List >
           <Subheader>All Events </Subheader>
           {listItems()}
+          <Popover
+
+           open={this.state.open}
+           anchorEl={this.state.anchorEl}
+           anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+           targetOrigin={{horizontal: 'left', vertical: 'top'}}
+           onRequestClose={this.handleRequestClose}
+         >
+           <Menu>
+             <MenuItem primaryText="Refresh" />
+             <MenuItem primaryText="Help &amp; feedback" />
+             <MenuItem primaryText="Settings" />
+             <MenuItem primaryText="Sign out" />
+           </Menu>
+         </Popover>
         </List>
         </CardText>
       </Card>

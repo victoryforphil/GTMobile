@@ -7,9 +7,23 @@ import {
   Alert,
   ScrollView,
   ListView,
-  ActivityIndicator
+  ActivityIndicator,
+  RefreshControl
 } from 'react-native';
-import * as firebase from 'firebase';
+
+
+import {bindActionCreators} from 'redux';
+import {connect} from "react-redux"
+
+import * as bellActions from "../../actions/bellActions"
+function mapStateToProps(state) {
+  return{bells: state.bells}
+}
+function mapDispatchToProps(dispatch){
+  return{ actions: bindActionCreators(bellActions,dispatch) }
+}
+
+
 class BellSchedule extends Component {
   constructor(props){
     super(props);
@@ -21,27 +35,15 @@ class BellSchedule extends Component {
     self.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     self.state = {
       dataSource: self.ds.cloneWithRows([]),
+      refreshing: false
     };
-    self.loadData();
+    this.props.actions.fetchBell(this.props.id || "CURRENT")
+
   }
-  loadData(){
-    var self = this;
-    const db = firebase.database().ref("BellSchedule/");
-
-    db.on('value', snap => {
-      var tempList =[];
-
-      snap.forEach(data => {
-          if(data.key == "currentPeriod"){
-            this.state.currentPeroid = data.value();
-          }else{
-            tempList.push(data.val());
-          }
-      });
 
 
-      this.setState({dataSource: self.ds.cloneWithRows(tempList)});
-    });
+  _onRefresh() {
+   this.props.actions.fetchBell(this.props.id || "CURRENT")
   }
   renderItem(rowData){
     var self = this;
@@ -49,18 +51,25 @@ class BellSchedule extends Component {
       <Peroid data={rowData}/>
     )
   }
+
   checkLoading(){
     var final;
-
+    console.log(this.props.bells.currentBell);
     if(this.state){
-      if(this.state.dataSource.getRowCount() == 0){
+      if(this.props.bells.currentBell.data == null){
 
-        final = (<ActivityIndicator size="large"/>)
+        final = (<ActivityIndicator key="BellSingleLoader" size="large"/>)
       }else{
 
         final = (<ListView
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
+          }
           style={styles.list}
-          dataSource={this.state.dataSource}
+          dataSource={this.ds.cloneWithRows(this.props.bells.currentBell.data.peroids)}
           renderRow={(rowData) => this.renderItem(rowData)}
         />)
       }
@@ -81,13 +90,21 @@ class BellSchedule extends Component {
 }
 
 class Peroid extends Component{
+  convertTime(time){
+    var timeObj = new Date(time);
+
+    var mins = timeObj.getMinutes();
+    if(mins < 10){
+      mins = "0"+mins;
+    }
+    return(timeObj.getHours() + ":"+mins)
+  }
   render(){
     return(
       <View style={styles.peroid}>
         <Text style={styles.peroidLabel}> {this.props.data.name} </Text>
-        <Text style={styles.peroidClasses}> {this.props.data.classes}</Text>
-        <Text style={styles.peroidStart}>{this.props.data.startTime} </Text>
-        <Text style={styles.peroidEnd}>{this.props.data.endTime} </Text>
+        <Text style={styles.peroidStart}>{this.convertTime(this.props.data.startTime)} </Text>
+        <Text style={styles.peroidEnd}>{this.convertTime(this.props.data.endTime)} </Text>
       </View>
     )
   }
@@ -98,7 +115,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   panel:{
-    flex: 1,
+
     flexDirection: 'column',
     margin: 5,
     padding: 10,
@@ -142,4 +159,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default BellSchedule;
+export default connect(mapStateToProps,mapDispatchToProps)(BellSchedule);

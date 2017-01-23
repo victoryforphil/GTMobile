@@ -1,3 +1,4 @@
 import {combineReducers} from 'redux';
 import events from "./eventReducer"
-export default combineReducers({events});
+import bells from "./bellReducer"
+export default combineReducers({events, bells});

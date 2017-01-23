@@ -20,7 +20,7 @@ import EventDetailPage from "./Events/EventDetailPage"
 import PollsPage from "./Polls/PollsPage"
 import PollDetailPage from "./Polls/PollDetailPage"
 import BellSchedulePage from "./BellSchedule/BellSchedulePage"
-
+import BellScheduleDetailPage from "./BellSchedule/BellScheduleDetailPage"
 class Navigation extends Component {
 
 //TODO: Dont Navigate if already on Page
@@ -103,7 +103,9 @@ class Navigation extends Component {
         case "PollDetailPage":
             return (<PollDetailPage nav={self } data={route.data}/> )
         case "BellSchedule":
-            return (<BellSchedulePage nav={self }/> )
+            return (<BellSchedulePage nav={self }/>)
+        case "BellScheduleDetailPage":
+            return (<BellScheduleDetailPage nav={self} data={route.data}/> )
       }
     }
   }

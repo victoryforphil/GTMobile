@@ -3,7 +3,8 @@ var Schema       = mongoose.Schema;
 
 var BellScheduleSchema   = new Schema({
     peroids: Array,
-    date: Date
+    date: Date,
+    special: String
 });
 
 module.exports = mongoose.model('BellSchedule', BellScheduleSchema);

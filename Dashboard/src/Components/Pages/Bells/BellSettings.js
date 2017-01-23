@@ -38,7 +38,7 @@ class BellSettings extends Component{
   }
 
   _onSpeicalChange(event, newText){
-    this.setState({name: newText});
+    this.setState({special: newText});
   }
 
   _onDateChange(event, newText){
@@ -105,7 +105,7 @@ class BellSettings extends Component{
 
 
         <DatePicker
-          style={{display:'inline-block'}}
+
           value={new Date(this.state.date)}
           hintText="Start Date"
           container="inline"

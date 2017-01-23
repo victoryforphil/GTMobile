@@ -16,6 +16,7 @@ export function fetchBell(id){
   }
 }
 
+
 export function createBell(data){
   return{
     type:"CREATE_BELL",
@@ -29,5 +30,13 @@ export function updateBell(id,data){
   return{
     type:"UPDATE_BELL",
     payload: axios.put("http://127.0.0.1:7777/api/bellschedule/"+id, data)
+  }
+}
+
+
+export function deleteBell(id){
+  return{
+    type:"DELETE_BELL",
+    payload: axios.delete("http://127.0.0.1:7777/api/bellschedule/"+id)
   }
 }
