@@ -26,6 +26,7 @@ class BellSettings extends Component{
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("Next Props:" + nextProps);
     if(!nextProps.event || !nextProps.event.data){
       return;
     }
@@ -57,12 +58,23 @@ class BellSettings extends Component{
 
 
   _onCreateButton(){
+    console.log(this.state.peroids[0].startTime);
     this.props.onSubmit(this.state);
   }
-  _onPeroidUpdate(i,state){
+  _onPeroidUpdate(i,update){
     var currentPeroids = this.state.peroids;
-    currentPeroids[i] = state;
+    if(update.name){
+      currentPeroids[i].name = update.name
+    }
+    if(update.startTime){
+      currentPeroids[i].startTime = update.startTime
+    }
+    if(update.endTime){
+      currentPeroids[i].endTime = update.endTime
+    }
+    console.log("TEST ES6 ", currentPeroids[i]);
     this.setState({peroids: currentPeroids});
+
   }
   renderPeroids(peroids){
     return(
@@ -80,8 +92,12 @@ class BellSettings extends Component{
         actAsExpander={true}
         showExpandableButton={true}
       />
+      <CardActions>
+        <FlatButton label={this.props.buttonText} onTouchTap={this._onCreateButton.bind(this)}/>
+      </CardActions>
       <CardText>
         <TextField
+          style={{display:'inline-block'}}
           value = {this.state.special}
           floatingLabelText="Speical Day (optional)"
           onChange={this._onSpeicalChange.bind(this)}
@@ -89,6 +105,7 @@ class BellSettings extends Component{
 
 
         <DatePicker
+          style={{display:'inline-block'}}
           value={new Date(this.state.date)}
           hintText="Start Date"
           container="inline"
@@ -98,9 +115,7 @@ class BellSettings extends Component{
          {this.renderPeroids(this.state.peroids)}
          <FlatButton label="New Peroid" onTouchTap={this._onNewPeroid.bind(this)}/>
        </CardText>
-      <CardActions>
-        <FlatButton label={this.props.buttonText} onTouchTap={this._onCreateButton.bind(this)}/>
-      </CardActions>
+
 
      </Card>
     )
@@ -108,49 +123,51 @@ class BellSettings extends Component{
 
 }
 
-
-
 class BellPeroid extends Component{
 
   constructor(props){
     super(props);
     this.state = {
       name: props.peroid.name,
-      startTime: props.peroid.startTime,
-      endTime: props.peroid.endTime
+      startTime: new Date(props.peroid.startTime),
+      endTime:new Date(props.peroid.endTime)
     }
   }
 
   _updateName(event, val){
     this.setState({name: val});
-    this.props.onUpdate(this.props.index,this.state);
+    this.props.onUpdate(this.props.index,{name: val});
   }
 
   _updateStartTime(event, val){
-    this.setState({startTime: val});
-    this.props.onUpdate(this.props.index,this.state);
+    console.log("Local Update: " + val);
+    this.setState({startTime: new Date(val)});
+    this.props.onUpdate(this.props.index,{startTime: val});
   }
 
   _updateEndTime(event, val){
     this.setState({endTime: val});
-    this.props.onUpdate(this.props.index,this.state);
+    this.props.onUpdate(this.props.index,{endTime: val});
   }
   render(){
-    return(<div>
+    return(<div style={{display:'inline-block'}}>
     <TextField
+    style={{display:'inline-block'}}
       value = {this.state.name}
       floatingLabelText="Name"
       onChange={this._updateName.bind(this)}
     />
 
     <TimePicker
-      value={new Date(this.state.startTime)}
+    style={{display:'inline-block'}}
+      value={this.state.startTime}
       hintText="12hr Format"
       onChange={this._updateStartTime.bind(this)}
     />
 
     <TimePicker
-      value={new Date(this.state.endTime)}
+      style={{display:'inline-block'}}
+      value={this.state.endTime }
       hintText="12hr Format"
       onChange={this._updateEndTime.bind(this)}
     />

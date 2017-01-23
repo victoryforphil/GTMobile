@@ -15,12 +15,12 @@ import {FlatButton, Card, CardHeader, CircularProgress ,CardText,CardActions, Te
 
 import BellSettings from "./BellSettings"
 
-import * as eventActions from "../../../actions/eventActions"
+import * as bellActions from "../../../actions/bellActions"
 function mapStateToProps(state) {
-  return{event: state.events.currentEvent}
+  return{bell: state.bells.currentBell}
 }
 function mapDispatchToProps(dispatch){
-  return{ actions: bindActionCreators(eventActions,dispatch) }
+  return{ actions: bindActionCreators(bellActions,dispatch) }
 }
 
 class BellDetailPage extends Component {
@@ -30,11 +30,11 @@ class BellDetailPage extends Component {
     }
 
     componentWillMount(){
-      this.props.actions.fetchEvent(this.props.params.id);
+      this.props.actions.fetchBell(this.props.params.id);
     }
 
     _submitChanges(data){
-      this.props.actions.updateEvent(this.props.event.data._id, data);
+      this.props.actions.updateBell(this.props.bell.data._id, data);
     }
 
     isLoading(render){
@@ -50,7 +50,7 @@ class BellDetailPage extends Component {
       return(
         <div className="container">
 
-          <BellSettings title={"Update"} event={this.props.event} buttonText={"Update"}onSubmit={this._submitChanges.bind(this)}/>
+          <BellSettings title={"Update"} event={this.props.bell} buttonText={"Update"}onSubmit={this._submitChanges.bind(this)}/>
 
 
         </div>
